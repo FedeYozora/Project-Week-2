@@ -1,0 +1,7 @@
+#userAvatar {
+  width: 20px;
+}
+
+.blank {
+  flex-grow: 1;
+}
