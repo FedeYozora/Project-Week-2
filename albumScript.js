@@ -14,6 +14,9 @@ window.onload = () => {
   })
     .then(resp => resp.json())
     .then(albumObj => {
+      const albumMinutes = Math.floor(albumObj.duration / 60);
+      const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
+
       container.innerHTML = `<div class="col-3">
       <img src="${albumObj.cover_medium}" style="scale: 1.1" alt="">
       </div>
@@ -24,7 +27,7 @@ window.onload = () => {
       <span class="artistName">${albumObj.artist.name} &#8226</span>
       <span class="releaseYear">${albumObj.release_date} &#8226</span>
       <span class="songCount">${albumObj.nb_tracks} brani,</span>
-      <span class="duration">${albumObj.duration} sec.</span>
+      <span class="duration">${albumMinutes} min ${albumSeconds} sec.</span>
       </div>`;
       containerTrack.innerHTML = `<div class="col-1">
       <h6>${albumObj.tracks.data[1].id}</h6>
