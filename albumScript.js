@@ -17,30 +17,40 @@ window.onload = () => {
       const albumMinutes = Math.floor(albumObj.duration / 60);
       const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
-      container.innerHTML = `<div class="col-3">
-      <img src="${albumObj.cover_medium}" style="scale: 1.1" alt="">
-      </div>
-      <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
-      <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
-      <div>
-      <img class="artistImg rounded-circle" src="${albumObj.artist.picture_small}" style="scale: 0.7" alt="">
-      <span class="artistName">${albumObj.artist.name} &#8226</span>
-      <span class="releaseYear">${albumObj.release_date} &#8226</span>
-      <span class="songCount">${albumObj.nb_tracks} brani,</span>
-      <span class="duration">${albumMinutes} min ${albumSeconds} sec.</span>
-      </div>`;
-      containerTrack.innerHTML = `<div class="col-1">
-      <h6>1</h6>
-      </div>
-      <div class="col-6">
-      <h6 class="text-white">${albumObj.tracks.data[0].title}</h6>
-      <h6>${albumObj.artist.name}</h6>
-      </div>
-      <div class="col-4 ps-5">
-      <h6>${albumObj.tracks.data[0].rank}</h6>
-      </div>
-      <div class="col-1">
-      <h6>${albumObj.tracks.data[0].duration}</h6>
-      </div>`;
+      const len = albumObj.tracks.data.length;
+      for (let i = 0; i < len; i++) {
+        let title = albumObj.tracks.data[i].title;
+        let artistName = albumObj.tracks.data[0].artist.name;
+        let duration = albumObj.tracks.data[0].duration;
+        const trackMinutes = Math.floor(duration / 60);
+        const trackSeconds = Math.round(duration - trackMinutes * 60);
+        let rank = albumObj.tracks.data[i].rank;
+
+        container.innerHTML = `<div class="col-3">
+        <img src="${albumObj.cover_medium}" style="scale: 1.1" alt="">
+        </div>
+        <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
+        <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
+        <div>
+        <img class="artistImg rounded-circle" src="${albumObj.artist.picture_small}" style="scale: 0.7" alt="">
+        <span class="artistName">${albumObj.artist.name} &#8226</span>
+        <span class="releaseYear">${albumObj.release_date} &#8226</span>
+        <span class="songCount">${albumObj.nb_tracks} brani,</span>
+        <span class="duration">${albumMinutes} min ${albumSeconds} sec.</span>
+        </div>`;
+        containerTrack.innerHTML = `<div class="col-1">
+        <h6>${i + 1}</h6>
+        </div>
+        <div class="col-6">
+        <h6 class="text-white">${title}</h6>
+        <h6>${artistName}</h6>
+        </div>
+        <div class="col-4 ps-5">
+        <h6>${rank}</h6>
+        </div>
+        <div class="col-1">
+        <h6>${trackMinutes}:${trackSeconds}</h6>
+        </div>`;
+      }
     });
 };
