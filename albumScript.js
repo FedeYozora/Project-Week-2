@@ -44,7 +44,8 @@ window.onload = () => {
         <h6>${i + 1}</h6>
         </div>
         <div class="col-6">
-        <h6 class="text-white">${title}</h6>
+        <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
+        overflow: hidden;">${title}</h6>
         <h6>${artistName}</h6>
         </div>
         <div class="col-4 ps-5">
