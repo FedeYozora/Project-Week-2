@@ -203,3 +203,11 @@ ul {
   padding-left: 0;
   margin-bottom: 0;
 }
+
+.col-2.rounded.vh-100 p {
+  font-size: 0.8rem;
+}
+
+.col-2.rounded.vh-100 span {
+  font-size: 0.7rem;
+}
