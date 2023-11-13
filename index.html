@@ -24,10 +24,19 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-3"></div>
-        <div class="col-7"></div>
-        <div class="col-2 vh-100 mt-3 mb-3" style="background-color: black;">
-          <h4 class="text-white">Attività amici</h4>
-          <h6 class="mt-5" style="color: lightgrey;">
+        <div class="col-7 bg-danger vh-100"></div>
+        <div class="col-2 vh-100 mb-3" style="background-color: black">
+          <div class="row">
+            <div class="col-7">
+              <h4 class="text-white">Attività amici</h4>
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+                <button><i class="fas fa-user-friends"></i></button>
+                <button><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+
+          <h6 class="mt-5" style="color: lightgrey">
             Consenti ad amici e follower su spotify di visualizzare cosa stai
             ascoltando.
           </h6>
@@ -41,9 +50,15 @@
               />
             </div>
             <div class="col-7">
-              <h6 class="mt-3" style="color: lightgrey;">Charlie Hookham</h6>
-              <p class="mb-0" style="color: lightgrey;">In camera · Yumi Zouma</p>
-              <i class="fas fa-record-vinyl"></i> <span style="color: lightgrey;">EP III</span>
+              <h6 class="mt-3" style="color: lightgrey">Charlie Hookham</h6>
+              <p class="mb-0" style="color: lightgrey">
+                In camera · Yumi Zouma
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">EP III</span>
+            </div>
+            <div class="col-3">
+              <p style="color: lightgrey" class="mt-3">4 ore</p>
             </div>
           </div>
           <div class="row">
@@ -56,9 +71,15 @@
               />
             </div>
             <div class="col-7">
-              <h6 class="mt-3" style="color: lightgrey;">lightdark02</h6>
-              <p class="mb-0" style="color: lightgrey;">Aimed to Kill · Jade LeMac</p>
-              <i class="fas fa-record-vinyl"></i> <span style="color: lightgrey;">Aimed to Kill</span>
+              <h6 class="mt-3" style="color: lightgrey">lightdark02</h6>
+              <p class="mb-0" style="color: lightgrey">
+                Aimed to Kill · Jade LeMac
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">Aimed to Kill</span>
+            </div>
+            <div class="col-3">
+              <p style="color: lightgrey">8 ore</p>
             </div>
           </div>
           <div class="row">
@@ -71,9 +92,15 @@
               />
             </div>
             <div class="col-7">
-              <h6 class="mt-3" style="color: lightgrey;">Valeria Traverso</h6>
-              <p class="mb-0" style="color: lightgrey;">New Kings · Sleeping Wolf</p>
-              <i class="fab fa-itunes-note"></i> <span style="color: lightgrey;">Twint Badass Mood</span>
+              <h6 class="mt-3" style="color: lightgrey">Valeria Traverso</h6>
+              <p class="mb-0" style="color: lightgrey">
+                New Kings · Sleeping Wolf
+              </p>
+              <i class="fab fa-itunes-note"></i>
+              <span style="color: lightgrey">Twint Badass Mood</span>
+            </div>
+            <div class="col-3">
+              <p style="color: lightgrey">3 giorni</p>
             </div>
           </div>
         </div>
@@ -84,5 +111,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./script.js"></script>
   </body>
 </html>
