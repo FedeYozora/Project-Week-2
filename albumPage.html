@@ -81,36 +81,31 @@
           <hr />
           <div class="scrollable">
             <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-              <li>Item 4</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
-              <li>Item 5</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
               <!-- Add more items here -->
             </ul>
           </div>
         </div>
         <div class="col-7 offset-3 px-0">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <a
               class="nav-item nav-link bg-dark rounded-circle ms-4 p-1"
               href="#"
@@ -137,7 +132,11 @@
             </button>
           </nav>
           <div class="container-fluid mt-3">
-            <div class="row align-items-center">
+            <div
+              id="albumInfo"
+              class="row align-items-center"
+              style="padding-inline: 30px"
+            >
               <div class="col-3">
                 <img src="./assets/imgs/album.jpg" alt="" />
               </div>
@@ -156,30 +155,30 @@
           </div>
         </div>
         <div class="col-7 offset-3">
-          <div class="d-flex align-items-center">
-            <i class="bi bi-play-circle fa-3x mt-2 me-5 text-white"></i>
-            <i class="bi bi-heart fa-2x mt-2 me-5 text-white"></i>
-            <i class="bi bi-download fa-2x mt-2 me-5 text-white"></i>
-            <i class="bi bi-three-dots fa-2x mt-2 me-5 text-white"></i>
+          <div class="d-flex align-items-center" style="padding-inline: 30px">
+            <i class="bi bi-play-circle fa-4x mt-3 me-5 text-success"></i>
+            <i class="bi bi-heart fa-2x mt-3 me-4 text-white"></i>
+            <i class="bi bi-download fa-2x mt-3 me-4 text-white"></i>
+            <i class="bi bi-three-dots fa-2x mt-3 me-4 text-white"></i>
           </div>
         </div>
-        <div class="col-7 offset-3">
+        <div class="col-7 offset-3" style="padding-inline: 30px">
           <div class="row mt-2 text-secondary">
             <div class="col-1">
               <h6>#</h6>
             </div>
-            <div class="col-5">
+            <div class="col-6">
               <h6>TITOLO</h6>
             </div>
             <div class="col-4">
               <h6>RIPRODUZIONI</h6>
             </div>
-            <div class="col-2">
+            <div class="col-1">
               <h6><i class="bi bi-clock"></i></h6>
             </div>
           </div>
           <hr />
-          <div class="row mt-2 text-secondary toFill"></div>
+          <div id="trackList" class="row mt-2 text-secondary"></div>
         </div>
         <div class="col-2"></div>
       </div>
@@ -225,12 +224,12 @@
 
       <div class="volume-controls">
         <img
-          src="./assets/./imgs/device.png"
+          src="./assets/./imgs/queue.png"
           style="height: 1rem; margin-right: 1rem; opacity: 0.8"
           alt="Volume"
         />
         <img
-          src="./assets/./imgs/playlist.png"
+          src="./assets/./imgs/device.png"
           style="height: 1rem; margin-right: 1rem; opacity: 0.8"
           alt="Settings"
         />
@@ -250,4 +249,5 @@
       </div>
     </div>
   </body>
+  <script src="./albumScript.js"></script>
 </html>
