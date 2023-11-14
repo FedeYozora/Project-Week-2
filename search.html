@@ -139,11 +139,11 @@
 
             <p class="h4 fw-bold">Sfoglia tutto</p>
             <div
-              class="row row-gap-4 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7"
+              class="row row-gap-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6"
             >
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -155,7 +155,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -167,7 +167,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -179,7 +179,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -191,7 +191,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -203,7 +203,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -215,7 +215,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -227,7 +227,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -239,7 +239,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -251,7 +251,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -263,7 +263,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -275,7 +275,7 @@
               </div>
               <div class="col">
                 <div class="searchCard rounded ps-4">
-                  <p class="h5 fw-bold">Podcast</p>
+                  <p class="h5 fw-bold mt-3">Podcast</p>
                   <div class="d-flex">
                     <img
                       src="./assets/imgs/search/image-1.jpeg"
@@ -375,7 +375,71 @@
         </div>
       </div>
     </div>
+    <div class="player">
+      <div class="volume-controls"></div>
+      <div class="player-center">
+        <div class="player-controls">
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/shuffle.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/previous_musicbar.png"
+          />
+          <img
+            style="height: 2rem; margin-right: 1rem"
+            src="./assets/./imgs/play_musicbar.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/next_musicbar.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/loop.png"
+          />
+        </div>
+        <div class="player-timeline">
+          <span class="current-time">0:00</span>
+          <input
+            type="range"
+            class="timeline-slider"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+          />
+          <span class="total-time">0:00</span>
+        </div>
+      </div>
 
+      <div class="volume-controls">
+        <img
+          src="./assets/./imgs/queue.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Volume"
+        />
+        <img
+          src="./assets/./imgs/device.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Settings"
+        />
+        <img
+          src="./assets/./imgs/music.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Fullscreen"
+        />
+        <input
+          type="range"
+          class="volume-slider"
+          min="0"
+          max="100"
+          step="1"
+          value="50"
+        />
+      </div>
+    </div>
     <script
       src="https://kit.fontawesome.com/e6a7f1bb81.js"
       crossorigin="anonymous"
