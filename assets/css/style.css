@@ -41,9 +41,7 @@ body {
   font-size: 15px;
 }
 
-.sidebar .navigation ul li a:hover,
-.sidebar .navigation ul li a:active,
-.sidebar .navigation ul li a:focus {
+.sidebar .navigation ul li a:hover {
   color: #ffffff;
 }
 
@@ -225,7 +223,7 @@ ul {
 .follow-button {
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 50px;
+  border-radius: 10px;
   color: white;
   cursor: pointer;
   font-size: 14px;

@@ -9,8 +9,8 @@ window.onload = () => {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-    }
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+    },
   })
     .then(resp => resp.json())
     .then(albumObj => {
@@ -18,7 +18,7 @@ window.onload = () => {
       const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
       container.innerHTML = `<div class="col-3">
-      <img src="${albumObj.cover_medium}" style="scale: 1.1" alt="">
+      <img src="${albumObj.cover_medium}" style="scale: 1.1; width: -webkit-fill-available;" alt="">
       </div>
       <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
       <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
@@ -36,8 +36,13 @@ window.onload = () => {
         let title = albumObj.tracks.data[i].title;
         let artistName = albumObj.tracks.data[i].artist.name;
         let duration = albumObj.tracks.data[i].duration;
+        let artistId = albumObj.tracks.data[i].artist.id;
         const trackMinutes = Math.floor(duration / 60);
-        const trackSeconds = Math.round(duration - trackMinutes * 60);
+        let trackSeconds = Math.round(duration - trackMinutes * 60);
+        if (trackSeconds < 10) {
+          trackSeconds = trackSeconds.toString();
+          trackSeconds = `0` + trackSeconds;
+        }
         let rank = albumObj.tracks.data[i].rank;
 
         htmlString += `<div class="col-1">
@@ -46,7 +51,8 @@ window.onload = () => {
         <div class="col-6">
         <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
-        <h6>${artistName}</h6>
+        <a style="text-decoration: none;
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6>${artistName}</h6></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
