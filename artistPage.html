@@ -104,7 +104,11 @@
             </ul>
           </div>
         </div>
-        <div class="col-7 offset-3 px-0" style="margin-bottom: 90px">
+        <div
+          class="col-7 offset-3 px-0"
+          style="margin-bottom: 90px"
+          id="centralCol"
+        >
           <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <a
               class="nav-item nav-link bg-dark rounded-circle ms-4 p-1"
@@ -130,7 +134,10 @@
                 alt=""
               />Epicode User
             </button>
-            <button id="sidebarButton" class="btn btn-secondary rounded-pill me-3">
+            <button
+              id="sidebarButton"
+              class="btn btn-secondary rounded-pill me-3"
+            >
               <i class="fas fa-users"></i>
             </button>
           </nav>
@@ -150,7 +157,7 @@
               <i class="bi bi-three-dots fa-2x mt-2 me-4 text-white"></i>
             </div>
           </div>
-          <div class="row mt-2 text-white">
+          <div class="row mt-2 text-white" style="margin-inline: 0">
             <div class="col-7" style="padding-inline: 30px">
               <h5>Popolari</h5>
               <div id="trackList" class="row mt-2 text-secondary"></div>
@@ -165,9 +172,16 @@
                     alt=""
                   />
                 </div>
-                <div class="col-9 offset-1 mt-2">
+                <div class="col-9 ms-2 mt-2">
                   <h6 class="text-white">Hai messo Mi piace a 7 brani</h6>
-                  <h6 class="text-secondary">Di Giorgio Vanni</h6>
+                  <h6 class="text-secondary">
+                    Di
+                    <a
+                      style="text-decoration: none; color: darkgray"
+                      href="/artistPage.html?artistID=456366"
+                      >Giorgio Vanni</a
+                    >
+                  </h6>
                 </div>
               </div>
             </div>
@@ -176,6 +190,7 @@
         <div
           class="col-2 vh-100 pt-2 mb-3"
           style="background-color: black; right: 0"
+          id="rightCol"
         >
           <div class="row">
             <div class="col-7">
@@ -183,7 +198,9 @@
             </div>
             <div class="col-5 d-flex justify-content-end">
               <button><i class="fas fa-user-friends me-2"></i></button>
-              <button><i class="fas fa-times ps-2 pe-2"></i></button>
+              <button>
+                <i class="fas fa-times ps-2 pe-2" id="closeBtn"></i>
+              </button>
             </div>
           </div>
 
@@ -324,5 +341,5 @@
       </div>
     </div>
   </body>
-  <script src="./artistScript.js"></script>
+  <script src="./artistScript.js" defer></script>
 </html>

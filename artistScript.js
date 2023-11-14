@@ -5,19 +5,16 @@ window.onload = () => {
   const container = document.getElementById("albumInfo");
   const containerTrack = document.getElementById("trackList");
 
-  fetch("https://api.deezer.com/artist/" + artistID + "?limit=10", {
+  fetch("https://api.deezer.com/artist/" + artistID + "/top?limit=50", {
     method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-    }
+    headers: { Accept: "application/json" },
   })
     .then(resp => resp.json())
     .then(albumObj => {
-      let imgArtist = albumObj.data[0].contributors[0].picture_xl;
+      let imgArtist = albumObj.data[0].contributors[0].picture_big;
       let contributorName = albumObj.data[0].contributors[0].name;
       let fanNumber = albumObj.data[0].rank;
-      container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-size: cover;">
+      container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
             <div class="col-5">
             <img style="width:20px; display: inline-block;" class="mb-1" src="./assets/imgs/verified-logo.png" alt="" />
@@ -28,7 +25,7 @@ window.onload = () => {
           </div>
         </div>`;
 
-      const len = albumObj.tracks.data.length;
+      const len = albumObj.data.length;
       let htmlString = "";
       for (let i = 0; i < len; i++) {
         let title = albumObj.data[i].title;
@@ -67,21 +64,18 @@ window.onload = () => {
     });
 };
 
-const closeButton = document.querySelector(".fas.fa-times").parentElement;
-const centralColumn = document.querySelector(".container-fluid .row .col-7");
-const rightColumn = document.querySelector(".container-fluid .row .col-2");
+const closeButton = document.getElementById("closeBtn");
+const centralColumn = document.getElementById("centralCol");
+const rightColumn = document.getElementById("rightCol");
 const sideBarButton = document.getElementById("sidebarButton");
 sideBarButton.onclick = () => {
   rightColumn.classList.remove("d-none");
-  rightColumn.style.position = "fixed"
   centralColumn.classList.remove("col-9");
-
 };
 
 closeButton.onclick = () => {
   rightColumn.classList.add("d-none");
-  rightColumn.style.position = "unset"
+  // rightColumn.style.position = "unset";
   centralColumn.classList.add("col-9");
   sideBarButton.classList.remove("d-none");
-  
 };
