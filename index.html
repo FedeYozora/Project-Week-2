@@ -96,7 +96,11 @@
           </ul>
         </div>
       </div>
-      <div class="col-7 offset-3 px-0" style="margin-bottom: 90px">
+      <div
+        class="col-7 offset-3 px-0"
+        style="margin-bottom: 90px"
+        id="centralCol"
+      >
         <main class="p-4">
           <div class="d-flex align-items-center gap-4">
             <button class="btn arrowsTop rounded-circle">
@@ -309,6 +313,7 @@
       <div
         class="col-2 vh-100 pt-2 mb-3"
         style="background-color: black; position: fixed; right: 0"
+        id="rightCol"
       >
         <div class="row">
           <div class="col-7">
@@ -316,7 +321,9 @@
           </div>
           <div class="col-5 d-flex justify-content-end">
             <button><i class="fas fa-user-friends me-2"></i></button>
-            <button><i class="fas fa-times ps-2 pe-2"></i></button>
+            <button>
+              <i class="fas fa-times ps-2 pe-2" id="closeBtn"></i>
+            </button>
           </div>
         </div>
         <h6 class="mt-5" style="color: lightgrey">

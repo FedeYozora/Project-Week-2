@@ -1,6 +1,6 @@
-const closeButton = document.querySelector(".fas.fa-times").parentElement;
-const centralColumn = document.querySelector(".container-fluid .row .col-7");
-const rightColumn = document.querySelector(".container-fluid .row .col-2");
+const closeButton = document.getElementById("closeBtn");
+const centralColumn = document.getElementById("centralCol");
+const rightColumn = document.getElementById("rightCol");
 const sideBarButton = document.getElementById("sidebarButton");
 sideBarButton.onclick = () => {
   rightColumn.classList.remove("d-none");
