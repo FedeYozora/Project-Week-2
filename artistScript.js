@@ -5,7 +5,7 @@ window.onload = () => {
   const container = document.getElementById("albumInfo");
   const containerTrack = document.getElementById("trackList");
 
-  fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + artistID, {
+  fetch("https://api.deezer.com/artist/" + artistID + "?limit=10", {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
@@ -14,9 +14,9 @@ window.onload = () => {
   })
     .then(resp => resp.json())
     .then(albumObj => {
-      let imgArtist = albumObj.contributors[0].picture_xl;
-      let contributorName = albumObj.contributors[0].name;
-      let fanNumber = albumObj.fans;
+      let imgArtist = albumObj.data[0].contributors[0].picture_xl;
+      let contributorName = albumObj.data[0].contributors[0].name;
+      let fanNumber = albumObj.data[0].rank;
       container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-size: cover;">
             <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
             <div class="col-5">
@@ -31,18 +31,18 @@ window.onload = () => {
       const len = albumObj.tracks.data.length;
       let htmlString = "";
       for (let i = 0; i < len; i++) {
-        let title = albumObj.tracks.data[i].title;
-        let artistName = albumObj.tracks.data[i].artist.name;
-        let duration = albumObj.tracks.data[i].duration;
-        let artistImg = albumObj.tracks.data[i].album.cover;
-        let artistId = albumObj.tracks.data[i].artist.id;
+        let title = albumObj.data[i].title;
+        let artistName = albumObj.data[i].artist.name;
+        let duration = albumObj.data[i].duration;
+        let artistImg = albumObj.data[i].album.cover;
+        let artistId = albumObj.data[i].artist.id;
         const trackMinutes = Math.floor(duration / 60);
         let trackSeconds = Math.round(duration - trackMinutes * 60);
         if (trackSeconds < 10) {
           trackSeconds = trackSeconds.toString();
           trackSeconds = `0` + trackSeconds;
         }
-        let rank = albumObj.tracks.data[i].rank;
+        let rank = albumObj.data[i].rank;
 
         htmlString += `<div class="col-1">
         <h6>${i + 1}</h6>
