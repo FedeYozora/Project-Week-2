@@ -28,3 +28,16 @@ input:hover {
     width: 40px;
     padding-left: 10px;
 }
+.searchCard {
+    background-color: #006450;
+    overflow: hidden;
+    
+}
+.searchCard img {
+    position: relative;
+    transform: rotate(20deg);
+    margin-top: 25px;
+    margin-left: auto;
+    right: -31px;
+    
+}
