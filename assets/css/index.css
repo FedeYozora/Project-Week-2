@@ -55,3 +55,7 @@ background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
     font-size: 0.9rem;
 
 }
+a {
+    text-decoration: none;
+    color: white;
+}
