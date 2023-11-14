@@ -210,6 +210,16 @@ ul {
   font-size: 0.7rem;
 }
 
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
 .follow-button {
   background-color: transparent;
   border: 2px solid white;
@@ -225,4 +235,15 @@ ul {
 
 .follow-button:hover {
   background-color: #0056b3;
+}
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
 }

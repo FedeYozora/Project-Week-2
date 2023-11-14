@@ -9,8 +9,8 @@ window.onload = () => {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   })
     .then(resp => resp.json())
     .then(albumObj => {
@@ -61,4 +61,19 @@ window.onload = () => {
       }
       containerTrack.innerHTML = htmlString;
     });
+};
+
+const closeButton = document.querySelector(".fas.fa-times").parentElement;
+const centralColumn = document.querySelector(".container-fluid .row .col-7");
+const rightColumn = document.querySelector(".container-fluid .row .col-2");
+const sideBarButton = document.getElementById("sidebarButton");
+sideBarButton.onclick = () => {
+  rightColumn.classList.remove("d-none");
+  centralColumn.classList.remove("col-9");
+};
+
+closeButton.onclick = () => {
+  rightColumn.classList.add("d-none");
+  centralColumn.classList.add("col-9");
+  sideBarButton.classList.remove("d-none");
 };
