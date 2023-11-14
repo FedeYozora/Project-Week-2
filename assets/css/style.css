@@ -222,3 +222,30 @@ ul {
   color: white;
   border: none;
 }
+.follow-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.follow-button:hover {
+  background-color: #0056b3;
+}
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
