@@ -1,0 +1,249 @@
+@import "./circular-font.css";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #121212;
+  font-family: "Circular";
+}
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 480px;
+  background-color: #000000;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo img {
+  width: 100px;
+}
+
+.sidebar .navigation ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.sidebar .navigation ul li {
+  padding: 10px 0px;
+}
+
+.sidebar .navigation ul li a {
+  color: #b3b3b3;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.sidebar .navigation ul li a:hover {
+  color: #ffffff;
+}
+
+.sidebar .navigation ul li a:hover .fa,
+.sidebar .navigation ul li a:active .fa,
+.sidebar .navigation ul li a:focus .fa {
+  color: #b3b3b3;
+}
+
+hr {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.scrollable {
+  max-height: 489px; /* Adjust this value according to your desired list height */
+  overflow-y: auto;
+  /* border: 1px solid #ccc; */
+  padding: 5px;
+  color: #b3b3b3;
+}
+
+.scrollable ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.scrollable li {
+  margin-bottom: 8px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.search {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.search.active {
+  opacity: 1;
+  pointer-events: auto;
+  height: 27px;
+  margin-bottom: 10px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.player {
+  width: 100%;
+  height: 80px; /* Adjust as needed */
+  position: fixed;
+  bottom: 0;
+  background-color: #181818;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume-controls {
+  width: 20vw;
+}
+
+.player-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+  align-items: center;
+}
+
+.player-timeline {
+  display: flex;
+  align-items: center;
+  color: #b3b3b3;
+}
+
+.timeline-slider {
+  margin: 0 10px;
+  width: 40vw;
+}
+
+.volume-slider {
+  width: 100px;
+  height: 4px;
+}
+
+.timeline-slider:hover,
+.volume-slider:hover {
+  background-color: #1bd760;
+}
+
+.timeline-slider::-webkit-slider-runnable-track,
+.volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #ddd;
+  border: none;
+  border-radius: 100px;
+}
+
+.timeline-slider::-webkit-slider-thumb,
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #1bd760;
+  margin-top: -6px;
+}
+
+.timeline-slider:focus,
+.volume-slider:focus {
+  outline: none;
+}
+
+.timeline-slider:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.col-2.rounded.vh-100 p {
+  font-size: 0.8rem;
+}
+
+.col-2.rounded.vh-100 span {
+  font-size: 0.7rem;
+}
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
+.follow-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.follow-button:hover {
+  background-color: #0056b3;
+}
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
