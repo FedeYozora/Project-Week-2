@@ -36,7 +36,11 @@ window.onload = () => {
         let duration = albumObj.tracks.data[i].duration;
         let artistImg = albumObj.tracks.data[i].album.cover;
         const trackMinutes = Math.floor(duration / 60);
-        const trackSeconds = Math.round(duration - trackMinutes * 60);
+        let trackSeconds = Math.round(duration - trackMinutes * 60);
+        if (trackSeconds < 10) {
+          trackSeconds = trackSeconds.toString();
+          trackSeconds = `0` + trackSeconds;
+        }
         let rank = albumObj.tracks.data[i].rank;
 
         htmlString += `<div class="col-1">
