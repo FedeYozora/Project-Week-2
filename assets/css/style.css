@@ -211,3 +211,20 @@ ul {
 .col-2.rounded.vh-100 span {
   font-size: 0.7rem;
 }
+
+.follow-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.follow-button:hover {
+  background-color: #0056b3;
+}
