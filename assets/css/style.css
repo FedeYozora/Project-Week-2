@@ -211,3 +211,14 @@ ul {
 .col-2.rounded.vh-100 span {
   font-size: 0.7rem;
 }
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
