@@ -35,6 +35,7 @@ window.onload = () => {
         let artistName = albumObj.tracks.data[i].artist.name;
         let duration = albumObj.tracks.data[i].duration;
         let artistImg = albumObj.tracks.data[i].album.cover;
+        let artistId = albumObj.tracks.data[i].artist.id;
         const trackMinutes = Math.floor(duration / 60);
         let trackSeconds = Math.round(duration - trackMinutes * 60);
         if (trackSeconds < 10) {
@@ -50,9 +51,10 @@ window.onload = () => {
         <img class="artistImg" style="width: -webkit-fill-available;" src="${artistImg}" style="scale: 0.7" alt="">
         </div>
         <div class="col-5">
-        <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
+        <h6 class="text-white mb-1" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
-        <h6>${artistName}</h6>
+        <a style="text-decoration: none;
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6>${artistName}</h6></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
