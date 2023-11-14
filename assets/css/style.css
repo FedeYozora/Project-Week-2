@@ -41,9 +41,7 @@ body {
   font-size: 15px;
 }
 
-.sidebar .navigation ul li a:hover,
-.sidebar .navigation ul li a:active,
-.sidebar .navigation ul li a:focus {
+.sidebar .navigation ul li a:hover {
   color: #ffffff;
 }
 
@@ -210,6 +208,33 @@ ul {
 
 .col-2.rounded.vh-100 span {
   font-size: 0.7rem;
+}
+
+#sidebarButton {
+  color: white;
+  border: none;
+
+}
+.col-5.d-flex.justify-content-end button {
+  background-color: black;
+  color: white;
+  border: none;
+}
+.follow-button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.follow-button:hover {
+  background-color: #0056b3;
 }
 
 #sidebarButton {
