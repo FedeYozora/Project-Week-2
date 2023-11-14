@@ -11,193 +11,375 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/search.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
+    <link rel="stylesheet" href="./assets/css/album.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <main class="p-4">
-      <div class="row mb-3">
-        <div class="col d-flex">
-          <button class="btn arrowsTop rounded-circle me-2">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          <button class="btn arrowsTop rounded-circle me-2">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-
-          <div class="form d-inline-block">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="text"
-              class="rounded-pill py-2 ps-3"
-              placeholder="Cosa vuoi ascoltare?"
-            />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 sidebar">
+          <div class="logo">
+            <img src="./assets/imgs/LogoWhite.png" alt="Logo Spotify" />
           </div>
-          <div class="ms-auto">
-            <button class="btn arrowsTop rounded-circle">
-              <i class="fa-regular fa-bell"></i>
-            </button>
-            <button class="btn arrowsTop rounded-circle friends">
-              <i class="fa-solid fa-users"></i>
-            </button>
-            <button class="btn arrowsTop rounded-circle">
-              <i class="fa-regular fa-user"></i>
-            </button>
+          <div class="navigation">
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-home"></span>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="searchLink">
+                  <span class="fa-solid fa-search"></span>
+                  <span>Cerca</span>
+                </a>
+              </li>
+              <div class="search" id="search">
+                <form id="form" class="form-inline my-2 my-lg-0">
+                  <input id="searchInput" type="text" placeholder="Cerca" />
+                </form>
+              </div>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-book"></span>
+                  <span>La tua libreria</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="navigation">
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-plus-square"></span>
+                  <span>Crea Playlist</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-heart"></span>
+                  <span>Brani che ti piacciono</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-bookmark"></span>
+                  <span>I tuoi episodi</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div class="scrollable">
+            <ul>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <li>Playlist Placeholder</li>
+              <!-- Add more items here -->
+            </ul>
+          </div>
+        </div>
+        <div
+          id="centralCol"
+          class="col-7 offset-3 px-0"
+          style="margin-bottom: 90px"
+        >
+          <main class="p-4">
+            <div class="row mb-3">
+              <div class="col d-flex">
+                <button class="btn arrowsTop rounded-circle me-2">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn arrowsTop rounded-circle me-2">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div class="form d-inline-block">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input
+                    type="text"
+                    class="rounded-pill py-2 ps-3"
+                    placeholder="Cosa vuoi ascoltare?"
+                  />
+                </div>
+                <div class="ms-auto">
+                  <button class="btn arrowsTop rounded-circle">
+                    <i class="fa-regular fa-bell"></i>
+                  </button>
+                  <button
+                    id="sidebarButton"
+                    class="btn arrowsTop rounded-circle friends"
+                  >
+                    <i class="fa-solid fa-users"></i>
+                  </button>
+                  <button class="btn arrowsTop rounded-circle">
+                    <i class="fa-regular fa-user"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p class="h4 fw-bold">Sfoglia tutto</p>
+            <div
+              class="row row-gap-4 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7"
+            >
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="searchCard rounded ps-4">
+                  <p class="h5 fw-bold">Podcast</p>
+                  <div class="d-flex">
+                    <img
+                      src="./assets/imgs/search/image-1.jpeg"
+                      alt=""
+                      width="100px"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <div
+          class="col-2 vh-100 pt-2 mb-3"
+          style="background-color: black; position: fixed; right: 0"
+          id="rightCol"
+        >
+          <div class="row">
+            <div class="col-7">
+              <h4 class="text-white">Attività amici</h4>
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+              <button><i class="fas fa-user-friends me-2"></i></button>
+              <button>
+                <i id="closeBtn" class="fas fa-times ps-2 pe-2"></i>
+              </button>
+            </div>
+          </div>
+          <h6 class="mt-5" style="color: lightgrey">
+            Consenti ad amici e follower su spotify di visualizzare cosa stai
+            ascoltando.
+          </h6>
+
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture1.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">Charlie Hookham</h6>
+              <p class="mb-0" style="color: lightgrey">
+                In camera · Yumi Zouma
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">EP III</span>
+            </div>
+            <div class="col-3">
+              <p style="color: lightgrey" class="mt-3">4 ore</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture2.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">lightdark02</h6>
+              <p class="mb-0" style="color: lightgrey">
+                Aimed to Kill · Jade LeMac
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">Aimed to Kill</span>
+            </div>
+            <div class="col-3 mt-3">
+              <p style="color: lightgrey">8 ore</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture3.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">Valeria Traverso</h6>
+              <p class="mb-0" style="color: lightgrey">
+                New Kings · Sleeping Wolf
+              </p>
+              <i class="fab fa-itunes-note"></i>
+              <span style="color: lightgrey">Twint Badass Mood</span>
+            </div>
+            <div class="col-3 mt-3">
+              <p style="color: lightgrey">3 giorni</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <p class="h4 fw-bold">Sfoglia tutto</p>
-      <div
-        class="row row-gap-4 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 row-cols-xxl-7"
-      >
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="searchCard rounded ps-4">
-            <p class="h5 fw-bold">Podcast</p>
-            <div class="d-flex">
-              <img
-                src="./assets/imgs/search/image-1.jpeg"
-                alt=""
-                width="100px"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
     <script
       src="https://kit.fontawesome.com/e6a7f1bb81.js"
       crossorigin="anonymous"
     ></script>
+    <script src="./script.js"></script>
   </body>
 </html>
