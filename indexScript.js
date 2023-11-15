@@ -25,7 +25,7 @@ async function fetchMainAlbum() {
     // const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
     container.innerHTML = `<img style="width: 300px;" src="${albumObj.data[0].album.cover_medium}" alt="" class="py-4">
-      <div class="row py-2">
+      <div class="row py-2" style="align-content: center;">
         <div class="col gx-5">
           <p class="d-inline-block">Album</p>
 
@@ -48,7 +48,7 @@ async function fetchMainAlbum() {
 async function fetchAlbums() {
   try {
     const response = await fetch(
-      `https://deezerdevs-deezer.p.rapidapi.com/search?q=giorgio-vanni`,
+      `https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem`,
       {
         method: "GET",
         headers: {

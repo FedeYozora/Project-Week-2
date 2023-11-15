@@ -83,30 +83,131 @@
             <button class="btn arrowsTop rounded-circle">
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-
-            <div class="d-flex userBadge align-items-center rounded-pill">
+            <div class="blank"></div>
+            <button
+              class="btn btn-secondary dropdown-toggle rounded-pill"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
               <img
-                src="https://hotelbooqi.com/wp-content/uploads/2021/12/128-1280406_view-user-icon-png-user-circle-icon-png.png"
+                id="userAvatar"
+                class="me-2"
+                src="./assets/imgs/user.png"
                 alt=""
-                height="25px"
-                class="rounded-circle"
-              />
-              <p class="px-3">User1</p>
-            </div>
+              />Epicode User
+            </button>
             <button
               id="sidebarButton"
-              class="btn arrowsTop rounded-circle friends"
+              class="btn arrowsTop rounded-circle friends d-none"
             >
               <i class="fa-solid fa-users"></i>
             </button>
           </div>
-          <div id="albumMain" class="mt-3 mb-4 d-flex px-3 ad rounded"></div>
+          <div id="albumMain" class="mt-3 mb-4 d-flex px-3 ad rounded">
+            <img
+              src="./assets/imgs/main/250x250-000000-80-0-0.jpg"
+              alt=""
+              class="py-4"
+            />
+            <div class="row py-2">
+              <div class="col gx-5">
+                <p class="d-inline-block"></p>
+                <h1></h1>
+                <p></p>
+                <p></p>
+              </div>
+            </div>
+          </div>
           <!--  div Buonasera   -->
           <div class="mb-4">
             <p class="h3">Buonasera</p>
-            <div id="albumRow" class="row row-cols-3 row-gap-4"></div>
-          </div>
+            <div id="albumRow" class="row row-cols-3 row-gap-4">
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
 
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
+
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
+
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
+
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col">
+                <a href="#">
+                  <div class="playlistsHome rounded d-flex gap-3">
+                    <img
+                      src="./assets/imgs/main/image-1.jpg"
+                      alt=""
+                      width="25%"
+                      class="rounded-start-2"
+                    />
+
+                    <p class="playlistName">Placeholder</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
           <!-- Div altro di ciò che ti piace  -->
           <div>
             <p class="h4 mb-3">Altro di ciò che ti piace</p>
@@ -196,7 +297,7 @@
         style="background-color: black; position: fixed; right: 0"
         id="rightCol"
       >
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-7">
             <h4 class="text-white">Attività amici</h4>
           </div>

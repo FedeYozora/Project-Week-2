@@ -10,10 +10,15 @@ const container = document.getElementById("albumInfo");
 const containerTrack = document.getElementById("trackList");
 const containerPlaylist = document.getElementById("playlistElenco");
 
-fetch("https://api.deezer.com/artist/" + artistID + "/top?limit=50", {
-  method: "GET",
-  headers: { Accept: "application/json" },
-})
+fetch(
+  "https://striveschool-api.herokuapp.com/api/deezer/artist/" +
+    artistID +
+    "/top?limit=10",
+  {
+    method: "GET",
+    headers: { Accept: "application/json" },
+  }
+)
   .then(resp => resp.json())
   .then(artistTracks => {
     let imgArtist = artistTracks.data[0].contributors[0].picture_big;

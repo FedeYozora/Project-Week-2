@@ -78,7 +78,7 @@
         >
           <main class="p-4 mainScrollable">
             <div class="row mb-3">
-              <div class="col d-flex">
+              <div class="col d-flex align-items-center gap-3">
                 <button class="btn arrowsTop rounded-circle me-2">
                   <i class="fa-solid fa-chevron-left"></i>
                 </button>
@@ -98,20 +98,26 @@
                     />
                   </form>
                 </div>
-                <div class="ms-auto">
-                  <button class="btn arrowsTop rounded-circle">
-                    <i class="fa-regular fa-bell"></i>
-                  </button>
-                  <button
-                    id="sidebarButton"
-                    class="btn arrowsTop rounded-circle friends"
-                  >
-                    <i class="fa-solid fa-users"></i>
-                  </button>
-                  <button class="btn arrowsTop rounded-circle">
-                    <i class="fa-regular fa-user"></i>
-                  </button>
-                </div>
+                <div class="blank"></div>
+                <button
+                  class="btn btn-secondary dropdown-toggle rounded-pill"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    id="userAvatar"
+                    class="me-2"
+                    src="./assets/imgs/user.png"
+                    alt=""
+                  />Epicode User
+                </button>
+                <button
+                  id="sidebarButton"
+                  class="btn arrowsTop rounded-circle friends d-none"
+                >
+                  <i class="fa-solid fa-users"></i>
+                </button>
               </div>
             </div>
             <p id="textBrani" class="h4 fw-bold">Sfoglia tutto</p>
@@ -278,7 +284,7 @@
           style="background-color: black; position: fixed; right: 0"
           id="rightCol"
         >
-          <div class="row">
+          <div class="row mt-3">
             <div class="col-7">
               <h4 class="text-white">Attività amici</h4>
             </div>
