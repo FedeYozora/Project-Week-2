@@ -40,12 +40,12 @@ background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
 .playBtn:hover {
     background-color: #12bd4d;
     color: black;
-    padding: 13px 28px;
+    scale: 1.1;
 }
 .saveBtn:hover {
     background-color: rgba(255, 255, 255, 0.158);
     border: 1px solid white;
-    padding: 13px 28px;
+    scale: 1.1;
 }
 .playlistName {
     margin-block: auto;
@@ -62,4 +62,8 @@ background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
 a {
     text-decoration: none;
     color: white;
+}
+.friends {
+    width: 40px;
+    padding-left: 10px;
 }

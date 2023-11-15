@@ -5,6 +5,10 @@ window.onload = () => {
   const container = document.getElementById("albumInfo");
   const containerTrack = document.getElementById("trackList");
 
+  // function timeChange(min, sec) {
+  //   document.getElementsByClassName("total-time").innerHTML = `min sec`;
+  // }
+
   fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     method: "GET",
     headers: {
@@ -45,21 +49,27 @@ window.onload = () => {
         }
         let rank = albumObj.tracks.data[i].rank;
 
-        htmlString += `<div class="col-1">
+        htmlString += `<div class="row" style="align-items: center;">
+        <div class="col-1">
         <h6>${i + 1}</h6>
         </div>
         <div class="col-6">
+        <a onclick="timeChange(${(trackMinutes, trackSeconds)})"
+         style="text-decoration: none;
+        color: darkgray;" href="#"> 
         <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
-        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6>${artistName}</h6></a>
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block">${artistName}</h6></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
         </div>
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
-        </div>`;
+        </div>
+        </div>
+        </a>`;
       }
       containerTrack.innerHTML = htmlString;
     });
