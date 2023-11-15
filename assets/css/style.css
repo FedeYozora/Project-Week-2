@@ -251,3 +251,9 @@ ul {
   color: white;
   border: none;
 }
+
+.bi-plus:before {
+  border: 1px solid white;
+  scale: 1.3;
+  border-radius: 3px;
+}

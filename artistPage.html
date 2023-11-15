@@ -75,28 +75,7 @@
           </div>
           <hr />
           <div class="scrollable">
-            <ul>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <!-- Add more items here -->
-            </ul>
+            <ul id="playlistElenco"></ul>
           </div>
         </div>
         <div
@@ -133,7 +112,7 @@
             </button>
             <button
               id="sidebarButton"
-              class="btn btn-secondary rounded-pill me-3"
+              class="btn btn-secondary rounded-pill me-3 d-none"
             >
               <i class="fas fa-users"></i>
             </button>
@@ -157,7 +136,11 @@
           <div class="row mt-2 text-white" style="margin-inline: 0">
             <div class="col-7" style="padding-inline: 30px">
               <h5>Popolari</h5>
-              <div id="trackList" class="row mt-2 text-secondary"></div>
+              <div
+                id="trackList"
+                class="row mt-2 text-secondary"
+                style="align-items: center"
+              ></div>
             </div>
             <div class="col-4 ps-5" style="padding-inline: 30px">
               <h5>Brani che ti piacciono</h5>

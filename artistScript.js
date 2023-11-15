@@ -1,9 +1,12 @@
+fetchPlaylist();
+
 const params = new URLSearchParams(window.location.search);
 const artistID = params.get("artistID");
 console.log("ARTIST ID: ", artistID);
 window.onload = () => {
   const container = document.getElementById("albumInfo");
   const containerTrack = document.getElementById("trackList");
+  const containerPlaylist = document.getElementById("playlistElenco");
 
   fetch("https://api.deezer.com/artist/" + artistID + "/top?limit=50", {
     method: "GET",
@@ -48,10 +51,10 @@ window.onload = () => {
         <img class="artistImg" style="width: -webkit-fill-available;" src="${artistImg}" style="scale: 0.7" alt="">
         </div>
         <div class="col-5">
-        <h6 class="text-white mb-1" style="text-overflow: ellipsis;white-space: nowrap;
+        <h6 class="text-white mt-2 mb-0" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
-        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block">${artistName}</h6></a>
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
@@ -71,6 +74,7 @@ const sideBarButton = document.getElementById("sidebarButton");
 sideBarButton.onclick = () => {
   rightColumn.classList.remove("d-none");
   centralColumn.classList.remove("col-9");
+  sideBarButton.classList.add("d-none");
 };
 
 closeButton.onclick = () => {
@@ -79,3 +83,27 @@ closeButton.onclick = () => {
   centralColumn.classList.add("col-9");
   sideBarButton.classList.remove("d-none");
 };
+
+async function fetchPlaylist() {
+  try {
+    const response = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/playlist/235`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      }
+    );
+    const albumObj = await response.json();
+
+    let playlistString = "";
+    let playlistTitle = albumObj.title;
+    playlistString += `<li>${playlistTitle}</li>`;
+    containerPlaylist.innerHTML = playlistString;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}

@@ -1,3 +1,5 @@
+fetchPlaylist();
+
 form.onsubmit = function (e) {
   e.preventDefault();
   // let searchBar = document.getElementById("searchInput");
@@ -6,6 +8,8 @@ form.onsubmit = function (e) {
 };
 
 const container = document.getElementById("rowSearch");
+const containerAlbum = document.getElementById("albumRow");
+const containerPlaylist = document.getElementById("playlistElenco");
 function loadItems(url) {
   fetch(url, {
     method: "GET",
@@ -18,12 +22,14 @@ function loadItems(url) {
     .then(albumObj => {
       const len = albumObj.data.length - 1;
       let htmlString = "";
-      for (let i = 0; i < 6; i++) {
+      let albumhtml = "";
+      for (let i = 0; i < 5; i++) {
         let title = albumObj.data[i].title;
         let artistName = albumObj.data[i].artist.name;
         let duration = albumObj.data[i].duration;
         let artistId = albumObj.data[i].artist.id;
-        let artistImg = albumObj.data[i].album.cover;
+        let artistImg = albumObj.data[i].artist.picture;
+        let albumImg = albumObj.data[i].album.cover;
         const trackMinutes = Math.floor(duration / 60);
         let trackSeconds = Math.round(duration - trackMinutes * 60);
         if (trackSeconds < 10) {
@@ -41,14 +47,12 @@ function loadItems(url) {
             "row-cols-xl-5",
             "row-cols-xxl-6"
           );
+
         htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">
-        <img class="artistImg" style="width: -webkit-fill-available;" src="${artistImg}" style="scale: 0.7" alt="">
+        <img class="artistImg" style="width: -webkit-fill-available;" src="${albumImg}" style="scale: 0.7" alt="">
         </div>
         <div class="col">
-        <a onclick="timeChange(${(trackMinutes, trackSeconds)})"
-         style="text-decoration: none;
-        color: darkgray;" href="#"> 
         <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
@@ -57,10 +61,29 @@ function loadItems(url) {
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
         </div>
+        <div class="col-1">
         </div>
-        </a>`;
+        </div>`;
+        container.innerHTML = htmlString;
+
+        albumhtml += `<div class="col cardArtist">
+        <div class="card" style="background-color:#181818; height: 100%;">
+          <img
+            src="${artistImg}"
+            class="card-img-top rounded-circle p-3"
+            alt="Foto Artista"
+          />
+          <div class="card-body">
+            <h5 class="artist-name text-white">${artistName}</h5>
+            <p class="artist" style="color:#868686">Artista</p>
+          </div>
+        </div>
+      </div>`;
+
+        containerAlbum.innerHTML = albumhtml;
+        document.getElementById("textAlbum").classList.remove("d-none");
+        removeDuplicates();
       }
-      container.innerHTML = htmlString;
     });
 }
 const closeButton = document.getElementById("closeBtn");
@@ -78,3 +101,39 @@ closeButton.onclick = () => {
   centralColumn.classList.add("col-9");
   sideBarButton.classList.remove("d-none");
 };
+
+function removeDuplicates() {
+  let artistNamesDupe = document.getElementsByClassName("cardArtist");
+
+  for (let i = 0; i < artistNamesDupe.length; i++) {
+    for (let j = i + 1; j < artistNamesDupe.length; j++) {
+      if (artistNamesDupe[i].textContent === artistNamesDupe[j].textContent) {
+        artistNamesDupe[j].style.display = "none";
+      }
+    }
+  }
+}
+
+async function fetchPlaylist() {
+  try {
+    const response = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/playlist/235`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      }
+    );
+    const albumObj = await response.json();
+
+    let playlistString = "";
+    let playlistTitle = albumObj.title;
+    playlistString += `<li>${playlistTitle}</li>`;
+    containerPlaylist.innerHTML = playlistString;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}

@@ -31,7 +31,7 @@
                 </a>
               </li>
               <li>
-                <a href="./search.html" id="searchLink">
+                <a href="./searchPage.html" id="searchLink">
                   <span class="fa-solid fa-search"></span>
                   <span>Cerca</span>
                 </a>
@@ -68,28 +68,7 @@
           </div>
           <hr />
           <div class="scrollable">
-            <ul>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <!-- Add more items here -->
-            </ul>
+            <ul id="playlistElenco"></ul>
           </div>
         </div>
         <div
@@ -114,7 +93,8 @@
                       id="searchInput"
                       type="text"
                       class="rounded-pill py-2 ps-3"
-                      placeholder="Cosa vuoi ascoltare?"
+                      placeholder="     Cosa vuoi ascoltare?"
+                      style="padding-inline: 7px"
                     />
                   </form>
                 </div>
@@ -285,25 +265,11 @@
                   </div>
                 </div>
               </div>
-              <p id="textAlbum" class="h4 fw-bold mt-3 d-none">Album</p>
-              <div class="row">
-                <div class="col">
-                  <div class="card" style="width: 18rem">
-                    <img
-                      src="./assets/imgs/main/image-10.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p id="textAlbum" class="h4 fw-bold mt-4 d-none">Artisti</p>
+              <div
+                id="albumRow"
+                class="row row-gap-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6"
+              ></div>
             </div>
           </main>
         </div>
