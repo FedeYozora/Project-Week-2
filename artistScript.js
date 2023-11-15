@@ -5,21 +5,21 @@ const artistID = params.get("artistID");
 let artistName;
 let playPauseIntervalId;
 console.log("ARTIST ID: ", artistID);
-window.onload = () => {
-  const container = document.getElementById("albumInfo");
-  const containerTrack = document.getElementById("trackList");
-  const containerPlaylist = document.getElementById("playlistElenco");
 
-  fetch("https://api.deezer.com/artist/" + artistID + "/top?limit=50", {
-    method: "GET",
-    headers: { Accept: "application/json" },
-  })
-    .then(resp => resp.json())
-    .then(artistTracks => {
-      let imgArtist = artistTracks.data[0].contributors[0].picture_big;
-      let contributorName = artistTracks.data[0].contributors[0].name;
-      let fanNumber = artistTracks.data[0].rank;
-      container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
+const container = document.getElementById("albumInfo");
+const containerTrack = document.getElementById("trackList");
+const containerPlaylist = document.getElementById("playlistElenco");
+
+fetch("https://api.deezer.com/artist/" + artistID + "/top?limit=50", {
+  method: "GET",
+  headers: { Accept: "application/json" },
+})
+  .then(resp => resp.json())
+  .then(artistTracks => {
+    let imgArtist = artistTracks.data[0].contributors[0].picture_big;
+    let contributorName = artistTracks.data[0].contributors[0].name;
+    let fanNumber = artistTracks.data[0].rank;
+    container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
             <div class="col-5">
             <img style="width:20px; display: inline-block;" class="mb-1" src="./assets/imgs/verified-logo.png" alt="" />
@@ -30,27 +30,27 @@ window.onload = () => {
           </div>
         </div>`;
 
-      artistName = artistTracks.data[0].artist.name;
-      localStorage.setItem(artistName, JSON.stringify(artistTracks.data));
+    artistName = artistTracks.data[0].artist.name;
+    localStorage.setItem(artistName, JSON.stringify(artistTracks.data));
 
-      const len = artistTracks.data.length;
-      let htmlString = "";
-      for (let i = 0; i < len; i++) {
-        const song = artistTracks.data[i];
-        let title = song.title;
-        let artistName = song.artist.name;
-        let duration = song.duration;
-        let artistImg = song.album.cover;
-        let artistId = song.artist.id;
-        const trackMinutes = Math.floor(duration / 60);
-        let trackSeconds = Math.round(duration - trackMinutes * 60);
-        if (trackSeconds < 10) {
-          trackSeconds = trackSeconds.toString();
-          trackSeconds = `0` + trackSeconds;
-        }
-        let rank = song.rank;
+    const len = artistTracks.data.length;
+    let htmlString = "";
+    for (let i = 0; i < len; i++) {
+      const song = artistTracks.data[i];
+      let title = song.title;
+      let artistName = song.artist.name;
+      let duration = song.duration;
+      let artistImg = song.album.cover;
+      let artistId = song.artist.id;
+      const trackMinutes = Math.floor(duration / 60);
+      let trackSeconds = Math.round(duration - trackMinutes * 60);
+      if (trackSeconds < 10) {
+        trackSeconds = trackSeconds.toString();
+        trackSeconds = `0` + trackSeconds;
+      }
+      let rank = song.rank;
 
-        htmlString += `<div class="col-1">
+      htmlString += `<div class="col-1">
         <h6>${i + 1}</h6>
         </div>
         <div class="col-1">
@@ -68,10 +68,9 @@ window.onload = () => {
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
         </div>`;
-      }
-      containerTrack.innerHTML = htmlString;
-    });
-};
+    }
+    containerTrack.innerHTML = htmlString;
+  });
 
 const closeButton = document.getElementById("closeBtn");
 const centralColumn = document.getElementById("centralCol");
