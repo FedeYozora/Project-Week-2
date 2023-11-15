@@ -133,12 +133,32 @@ hr {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40vw;
+  /* width: 40vw; */
 }
 
 .player-controls {
   display: flex;
   align-items: center;
+}
+#navBottom {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+}
+@media screen and (max-width: 575px) {
+  .player {
+    width: 95%;
+    margin-inline-start: 2.5%;
+    height: 60px; /* Adjust as needed */
+    position: fixed;
+    bottom: 80px;
+    background-color: #282828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
 }
 
 .volume-controls {

@@ -1,0 +1,50 @@
+body {
+    color: white;
+    background: rgb(17,17,17);
+    background: linear-gradient(0deg, rgba(17,17,17,17) 33%, rgba(33,33,33,1) 100%);
+    min-height: 100vh;
+}
+@media screen and (max-width: 575px) {
+    body {
+        background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 71%, rgba(33,33,33,1) 100%);
+    }
+    
+}
+.arrowsTop  {
+    background-color: #131313;
+    color: white;
+    font-weight: 900;
+}
+input {
+    background-color: #2a2a2a;
+    color: #6c6c6c;
+    border: 1px solid transparent;
+    text-align: center;
+}
+input:hover {
+    border: 1px solid #414141;
+}
+.form i {
+    position: absolute;
+}
+.fa-magnifying-glass {
+    padding: 12px;
+}
+.friends {
+    width: 40px;
+    padding-left: 10px;
+}
+.searchCard {
+    background-color: #006450;
+    overflow: hidden;
+    
+}
+.searchCard img {
+    position: relative;
+    transform: rotate(20deg);
+    margin-top: 25px;
+    margin-left: auto;
+    right: -31px;
+    
+}
