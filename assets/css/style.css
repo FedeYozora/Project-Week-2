@@ -69,6 +69,14 @@ hr {
   color: #b3b3b3;
 }
 
+.scrollableMain {
+  height: 880px; /* Adjust this value according to your desired list height */
+  overflow-y: auto;
+  /* border: 1px solid #ccc; */
+  padding: 5px;
+  color: #b3b3b3;
+}
+
 .scrollable ul {
   list-style-type: none;
   padding: 0;
