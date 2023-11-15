@@ -24,6 +24,7 @@ background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
 .playlistsHome {
     background-color: #2d2d2d;
 }
+
 .playBtn {
     background-color: #1ed760;
     padding: 10px 25px;
@@ -53,6 +54,10 @@ background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
 }
 .musicCards {
     background-color: #171717;
+    width: 100%;
+}
+.musicCards img {
+    width: 100%;
 }
 .subtitle {
     color: #838383;
@@ -66,4 +71,23 @@ a {
 .friends {
     width: 40px;
     padding-left: 10px;
+}
+@media screen and (max-width: 575px) {
+    body {
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 71%, rgba(33,33,33,1) 100%);
+    }
+    .playlistsHome {
+        background-color: transparent;
+    }
+    .playlistsHome img {
+        width: 35%;
+    }
+    .musicCards img {
+        width: 55%;
+        background-color: #242424;
+    }
+    .anchorMusicCards {
+        width: 100%;
+    }
 }
