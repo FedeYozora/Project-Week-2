@@ -2,6 +2,8 @@ fetchPlaylist();
 
 const params = new URLSearchParams(window.location.search);
 const artistID = params.get("artistID");
+let artistName;
+let playPauseIntervalId;
 console.log("ARTIST ID: ", artistID);
 window.onload = () => {
   const container = document.getElementById("albumInfo");
@@ -13,10 +15,10 @@ window.onload = () => {
     headers: { Accept: "application/json" },
   })
     .then(resp => resp.json())
-    .then(albumObj => {
-      let imgArtist = albumObj.data[0].contributors[0].picture_big;
-      let contributorName = albumObj.data[0].contributors[0].name;
-      let fanNumber = albumObj.data[0].rank;
+    .then(artistTracks => {
+      let imgArtist = artistTracks.data[0].contributors[0].picture_big;
+      let contributorName = artistTracks.data[0].contributors[0].name;
+      let fanNumber = artistTracks.data[0].rank;
       container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
             <div class="col-5">
@@ -28,21 +30,25 @@ window.onload = () => {
           </div>
         </div>`;
 
-      const len = albumObj.data.length;
+      artistName = artistTracks.data[0].artist.name;
+      localStorage.setItem(artistName, JSON.stringify(artistTracks.data));
+
+      const len = artistTracks.data.length;
       let htmlString = "";
       for (let i = 0; i < len; i++) {
-        let title = albumObj.data[i].title;
-        let artistName = albumObj.data[i].artist.name;
-        let duration = albumObj.data[i].duration;
-        let artistImg = albumObj.data[i].album.cover;
-        let artistId = albumObj.data[i].artist.id;
+        const song = artistTracks.data[i];
+        let title = song.title;
+        let artistName = song.artist.name;
+        let duration = song.duration;
+        let artistImg = song.album.cover;
+        let artistId = song.artist.id;
         const trackMinutes = Math.floor(duration / 60);
         let trackSeconds = Math.round(duration - trackMinutes * 60);
         if (trackSeconds < 10) {
           trackSeconds = trackSeconds.toString();
           trackSeconds = `0` + trackSeconds;
         }
-        let rank = albumObj.data[i].rank;
+        let rank = song.rank;
 
         htmlString += `<div class="col-1">
         <h6>${i + 1}</h6>
@@ -52,7 +58,7 @@ window.onload = () => {
         </div>
         <div class="col-5">
         <h6 class="text-white mt-2 mb-0" style="text-overflow: ellipsis;white-space: nowrap;
-        overflow: hidden;">${title}</h6>
+        overflow: hidden;" onclick="play(event)">${title}</h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
@@ -79,7 +85,6 @@ sideBarButton.onclick = () => {
 
 closeButton.onclick = () => {
   rightColumn.classList.add("d-none");
-  // rightColumn.style.position = "unset";
   centralColumn.classList.add("col-9");
   sideBarButton.classList.remove("d-none");
 };
@@ -107,3 +112,39 @@ async function fetchPlaylist() {
     console.error("Error:", error);
   }
 }
+const playBtn = document.getElementById("play-btn");
+const currentTime = document.querySelector(".current-time");
+const totalTime = document.querySelector(".total-time");
+const timeSlider = document.querySelector(".timeline-slider");
+
+const parseTimeFromString = timeString => {
+  return timeString.split(":").reduce((acc, time) => 60 * acc + +time);
+};
+
+const parseTimeToString = time => {
+  return new Date(time * 1000).toISOString().substring(14, 19);
+};
+
+const updateTimeStamp = prevValue => {
+  let intervalId = setInterval(() => {
+    const newValue = ++prevValue;
+    currentTime.innerText = parseTimeToString(newValue);
+    timeSlider.value = newValue;
+  }, 1000);
+  return intervalId;
+};
+
+const play = event => {
+  const song = JSON.parse(localStorage.getItem(artistName)).find(
+    song => song.title === event.currentTarget.innerText
+  );
+  timeSlider.max = song.duration;
+  totalTime.innerText = parseTimeToString(song.duration);
+  playPauseIntervalId = updateTimeStamp(
+    parseTimeFromString(currentTime.innerText)
+  );
+};
+
+const pause = () => {
+  clearInterval(playPauseIntervalId);
+};
