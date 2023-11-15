@@ -77,10 +77,16 @@
       >
         <main class="p-4 scrollableMain">
           <div class="d-flex align-items-center gap-4">
-            <button class="btn arrowsTop rounded-circle">
+            <button
+              onclick="history.back()"
+              class="btn arrowsTop rounded-circle"
+            >
               <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="btn arrowsTop rounded-circle">
+            <button
+              onclick="history.forward()"
+              class="btn arrowsTop rounded-circle"
+            >
               <i class="fa-solid fa-chevron-right"></i>
             </button>
             <div class="blank"></div>
