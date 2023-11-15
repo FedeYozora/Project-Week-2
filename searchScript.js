@@ -1,6 +1,6 @@
 form.onsubmit = function (e) {
   e.preventDefault();
-  let searchBar = document.getElementById("searchInput");
+  // let searchBar = document.getElementById("searchInput");
   let searchUrl = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchInput.value}`;
   loadItems(searchUrl);
 };
@@ -18,15 +18,47 @@ function loadItems(url) {
     .then(albumObj => {
       const len = albumObj.data.length - 1;
       let htmlString = "";
-      for (let i = 0; i < len; i++) {
-        htmlString += `<div class="col">
-        <div class="searchCard rounded ps-4">
-          <p class="h5 fw-bold mt-3">Podcast</p>
-          <div class="d-flex">
-            <img src="${albumObj.data[i].album.cover}" alt="" width="100px">
-          </div>
+      for (let i = 0; i < 6; i++) {
+        let title = albumObj.data[i].title;
+        let artistName = albumObj.data[i].artist.name;
+        let duration = albumObj.data[i].duration;
+        let artistId = albumObj.data[i].artist.id;
+        let artistImg = albumObj.data[i].album.cover;
+        const trackMinutes = Math.floor(duration / 60);
+        let trackSeconds = Math.round(duration - trackMinutes * 60);
+        if (trackSeconds < 10) {
+          trackSeconds = trackSeconds.toString();
+          trackSeconds = `0` + trackSeconds;
+        }
+        document.getElementById("textBrani").innerText = "Brani";
+        document
+          .getElementById("rowSearch")
+          .classList.remove(
+            "row-cols-2",
+            "row-cols-sm-2",
+            "row-cols-md-3",
+            "row-cols-lg-4",
+            "row-cols-xl-5",
+            "row-cols-xxl-6"
+          );
+        htmlString += `<div class="row" style="align-items: center;">
+        <div class="col-1">
+        <img class="artistImg" style="width: -webkit-fill-available;" src="${artistImg}" style="scale: 0.7" alt="">
         </div>
-      </div>`;
+        <div class="col">
+        <a onclick="timeChange(${(trackMinutes, trackSeconds)})"
+         style="text-decoration: none;
+        color: darkgray;" href="#"> 
+        <h6 class="text-white" style="text-overflow: ellipsis;white-space: nowrap;
+        overflow: hidden;">${title}</h6>
+        <a style="text-decoration: none;
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block">${artistName}</h6></a>
+        </div>
+        <div class="col-1">
+        <h6>${trackMinutes}:${trackSeconds}</h6>
+        </div>
+        </div>
+        </a>`;
       }
       container.innerHTML = htmlString;
     });
