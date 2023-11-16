@@ -16,8 +16,8 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-  }
+    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+  },
 })
   .then(resp => resp.json())
   .then(albumObj => {
@@ -58,9 +58,6 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         <h6>${i + 1}</h6>
         </div>
         <div class="col-6">
-        <a onclick="timeChange(${(trackMinutes, trackSeconds)})"
-         style="text-decoration: none;
-        color: darkgray;" href="#"> 
         <h6 class="text-white mt-2" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
@@ -72,8 +69,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
         </div>
-        </div>
-        </a>`;
+        </div>`;
     }
     containerTrack.innerHTML = htmlString;
   })
@@ -136,8 +132,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
