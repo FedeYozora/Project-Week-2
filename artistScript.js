@@ -16,7 +16,7 @@ fetch(
     "/top?limit=10",
   {
     method: "GET",
-    headers: { Accept: "application/json" },
+    headers: { Accept: "application/json" }
   }
 )
   .then(resp => resp.json())
@@ -63,7 +63,7 @@ fetch(
         </div>
         <div class="col-5">
         <h6 class="text-white mt-2 mb-0" style="text-overflow: ellipsis;white-space: nowrap;
-        overflow: hidden;" onclick="play(event)">${title}</h6>
+        overflow: hidden;" onclick="play(event)"> <a href = "#">${title} </a> </h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
@@ -102,8 +102,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -153,6 +153,15 @@ const play = event => {
   playPauseIntervalId = updateTimeStamp(
     parseTimeFromString(currentTime.innerText)
   );
+const miniPlayer = document.getElementById("mini-player");
+const row = miniPlayer.children[0];
+row.children[0].children[0].src = song.album.cover; 
+row.children[1].children[0].innerText = song.title;
+row.children[1].children[1].innerText = song.artist.name
+ 
+
+
+
 };
 
 const pause = () => {
