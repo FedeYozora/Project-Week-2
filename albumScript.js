@@ -16,8 +16,8 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-  },
+    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+  }
 })
   .then(resp => resp.json())
   .then(albumObj => {
@@ -103,8 +103,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -123,3 +123,23 @@ async function fetchPlaylist() {
     console.error("Error:", error);
   }
 }
+
+const colorThief = new ColorThief();
+const img = document.querySelector("img");
+
+// Make sure image is finished loading
+if (img.complete) {
+  colorThief.getColor(img);
+} else {
+  image.addEventListener("load", function () {
+    colorThief.getColor(img);
+  });
+}
+console.log(colorThief.getColor(img));
+
+const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+  const hex = x.toString(16)
+  return hex.length === 1 ? '0' + hex : hex
+}).join('')
+
+rgbToHex(102, 51, 153); // #663399
