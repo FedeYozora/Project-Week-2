@@ -25,7 +25,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
     container.innerHTML = `<div class="col-3">
-      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="">
+      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="" crossorigin="anonymous">
       </div>
       <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
       <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
@@ -76,6 +76,39 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         </a>`;
     }
     containerTrack.innerHTML = htmlString;
+  })
+  .then(() => {
+    const rgbToHex = (r, g, b) =>
+      "#" +
+      [r, g, b]
+        .map(x => {
+          const hex = x.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        })
+        .join("");
+
+    rgbToHex(102, 51, 153); // #663399
+
+    const colorThief = new ColorThief();
+    const img = document.getElementById("myImg");
+    const background = document.getElementById("dominant-bg");
+    console.log(img);
+
+    if (img.complete) {
+      colorThief.getColor(img);
+      console.log(colorThief.getColor(img));
+      console.log("FIRST");
+    } else {
+      img.addEventListener("load", function () {
+        const colorProfile = colorThief.getColor(img);
+        const [r, g, b] = [...colorProfile];
+
+        background.style.cssText = background.style.cssText.replace(
+          "rgb(0, 0, 0)",
+          rgbToHex(r, g, b)
+        );
+      });
+    }
   });
 
 const closeButton = document.querySelector(".fas.fa-times").parentElement;

@@ -75,7 +75,8 @@ hr {
   ); /* Adjust this value according to your desired list height */
   overflow-y: auto;
   /* border: 1px solid #ccc; */
-  padding: 5px;
+  padding-inline: 5px;
+  padding-bottom: 5px;
   color: #b3b3b3;
 }
 
