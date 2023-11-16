@@ -111,7 +111,13 @@ async function fetchPlaylist() {
 
     let playlistString = "";
     let playlistTitle = albumObj.title;
-    playlistString += `<li>${playlistTitle}</li>`;
+    playlistString += `<a href="./searchPage.html?artistID=rock"><li>${playlistTitle}</li></a>
+    <a href="./searchPage.html?artistID=Eminem"><li>Eminem</li></a>
+    <a href="./searchPage.html?artistID=Imagine+Dragons"><li>Imagine Dragons</li></a>
+    <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
+    <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
+    <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {
     console.error("Error:", error);
@@ -125,6 +131,7 @@ const sideBarButton = document.getElementById("sidebarButton");
 sideBarButton.onclick = () => {
   rightColumn.classList.remove("d-none");
   centralColumn.classList.remove("col-9");
+  sideBarButton.classList.add("d-none");
 };
 
 closeButton.onclick = () => {
