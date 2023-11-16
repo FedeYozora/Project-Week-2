@@ -5,3 +5,11 @@
 .blank {
   flex-grow: 1;
 }
+#divBlured {
+  height: 500px;
+}
+@media screen and (max-width: 575px) {
+#divBlured {
+  height: 650px;
+}
+}

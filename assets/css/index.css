@@ -1,5 +1,8 @@
 body {
   color: white;
+
+}
+#centralCol {
   background: rgb(17, 17, 17);
   background: linear-gradient(
     0deg,

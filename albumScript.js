@@ -16,26 +16,26 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-  },
+    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+  }
 })
-  .then(resp => resp.json())
-  .then(albumObj => {
+  .then((resp) => resp.json())
+  .then((albumObj) => {
     const albumMinutes = Math.floor(albumObj.duration / 60);
     const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
-    container.innerHTML = `<div class="col-3">
+    container.innerHTML = `<div class="col-8 col-sm-3">
       <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="">
       </div>
-      <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
-      <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
+      <div class="col-8 offset-sm-1 text-white"><h6 class="mt-5 d-none d-sm-block">Album</h6>
+      <p class="albumName fw-bold fs-1" >${albumObj.title}</p>
       <div>
       <img class="artistImg rounded-circle" src="${albumObj.artist.picture_small}" style="scale: 0.7" alt="">
       <a style="text-decoration: none;
         color: white;" href="./artistPage.html?artistID=${albumObj.artist.id}"><span class="artistName">${albumObj.artist.name} &#8226</span></a>
-      <span class="releaseYear">${albumObj.release_date} &#8226</span>
-      <span class="songCount">${albumObj.nb_tracks} brani,</span>
-      <span class="duration">${albumMinutes} min ${albumSeconds} sec.</span>
+      <span class="releaseYear fs-6">${albumObj.release_date} &#8226</span>
+      <span class="songCount fs-6">${albumObj.nb_tracks} brani,</span>
+      <span class="duration fs-6">${albumMinutes} min ${albumSeconds} sec.</span>
       </div>`;
 
     const len = albumObj.tracks.data.length;
@@ -78,22 +78,6 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     containerTrack.innerHTML = htmlString;
   });
 
-const closeButton = document.querySelector(".fas.fa-times").parentElement;
-const centralColumn = document.querySelector(".container-fluid .row .col-7");
-const rightColumn = document.querySelector(".container-fluid .row .col-2");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-  sideBarButton.classList.add("d-none");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};
-
 async function fetchPlaylist() {
   try {
     const response = await fetch(
@@ -103,8 +87,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -140,7 +124,7 @@ console.log(colorThief.getColor(img));
 const rgbToHex = (r, g, b) =>
   "#" +
   [r, g, b]
-    .map(x => {
+    .map((x) => {
       const hex = x.toString(16);
       return hex.length === 1 ? "0" + hex : hex;
     })
