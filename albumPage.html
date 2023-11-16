@@ -84,96 +84,109 @@
           style="margin-bottom: 90px"
         >
           <main class="py-3">
-            <div class="d-flex align-items-center gap-4 px-4 mb-3">
-              <button
-                onclick="history.back()"
-                class="btn arrowsTop rounded-circle"
-              >
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <button
-                onclick="history.forward()"
-                class="btn arrowsTop rounded-circle"
-              >
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-              <div class="blank"></div>
-              <button
-                style="background-color: #373737; color: white"
-                class="btn dropdown-toggle rounded-pill"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  id="userAvatar"
-                  class="me-2 rounded-circle"
-                  src="./assets/imgs/Avatar.png"
-                  alt=""
-                />Andrea
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Impostazioni</a></li>
-                <li><a class="dropdown-item" href="#">Preferenze</a></li>
-                <li><a class="dropdown-item" href="#">Disconnetti</a></li>
-              </ul>
-              <button
-                id="sidebarButton"
-                class="btn arrowsTop rounded-circle friends d-none"
-              >
-                <i class="fa-solid fa-users"></i>
-              </button>
-            </div>
-            <div class="container-fluid mt-2">
-              <div
-                id="albumInfo"
-                class="row align-items-center"
-                style="padding-inline: 30px"
-              >
-                <div class="col-3">
-                  <img src="" alt="" />
-                </div>
-                <div class="col-8 offset-1 text-white">
-                  <h6 class="mt-5"></h6>
-                  <h1 class="albumName"></h1>
-                  <div>
-                    <img class="artistImg" src="" alt="" />
-                    <span class="artistName"></span>
-                    <span class="releaseYear"> </span>
-                    <span class="songCount"></span>
-                    <span class="duration"></span>
+            <div
+              style="
+                background: linear-gradient(
+                  180deg,
+                  rgba(255, 0, 0, 1) 0%,
+                  rgb(29, 27, 27) 90%
+                );
+                height: 500px;
+              "
+            >
+              <div class="d-flex align-items-center gap-4 px-4 mb-3 py-3">
+                <button
+                  onclick="history.back()"
+                  class="btn arrowsTop rounded-circle"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button
+                  onclick="history.forward()"
+                  class="btn arrowsTop rounded-circle"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="blank"></div>
+                <button
+                  style="background-color: #373737; color: white"
+                  class="btn dropdown-toggle rounded-pill"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    id="userAvatar"
+                    class="me-2 rounded-circle"
+                    src="./assets/imgs/Avatar.png"
+                    alt=""
+                  />Andrea
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+                  <li><a class="dropdown-item" href="#">Preferenze</a></li>
+                  <li><a class="dropdown-item" href="#">Disconnetti</a></li>
+                </ul>
+                <button
+                  id="sidebarButton"
+                  class="btn arrowsTop rounded-circle friends d-none"
+                >
+                  <i class="fa-solid fa-users"></i>
+                </button>
+              </div>
+              <div class="container-fluid mt-2">
+                <div
+                  id="albumInfo"
+                  class="row align-items-center"
+                  style="padding-inline: 30px"
+                >
+                  <div class="col-3">
+                    <img src="" alt="" />
+                  </div>
+                  <div class="col-8 offset-1 text-white">
+                    <h6 class="mt-5"></h6>
+                    <h1 class="albumName"></h1>
+                    <div>
+                      <img class="artistImg" src="" alt="" />
+                      <span class="artistName"></span>
+                      <span class="releaseYear"> </span>
+                      <span class="songCount"></span>
+                      <span class="duration"></span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <div
-                class="d-flex align-items-center"
-                style="padding-inline: 30px"
-              >
-                <i class="bi bi-play-circle fa-4x mt-3 me-5 text-success"></i>
-                <i class="bi bi-heart fa-2x mt-3 me-4 text-white"></i>
-                <i class="bi bi-download fa-2x mt-3 me-4 text-white"></i>
-                <i class="bi bi-three-dots fa-2x mt-3 me-4 text-white"></i>
-              </div>
-            </div>
-            <div class="col-12" style="padding-inline: 30px">
-              <div class="row mt-2 text-secondary">
-                <div class="col-1">
-                  <h6>#</h6>
-                </div>
-                <div class="col-6">
-                  <h6>TITOLO</h6>
-                </div>
-                <div class="col-4 ps-4">
-                  <h6>CLASSIFICA</h6>
-                </div>
-                <div class="col-1 ps-4">
-                  <h6><i class="bi bi-clock"></i></h6>
+            <div style="margin-top: -158px; z-index: 2">
+              <div class="col-12">
+                <div
+                  class="d-flex align-items-center"
+                  style="padding-inline: 30px"
+                >
+                  <i class="bi bi-play-circle fa-4x mt-3 me-5 text-success"></i>
+                  <i class="bi bi-heart fa-2x mt-3 me-4 text-white"></i>
+                  <i class="bi bi-download fa-2x mt-3 me-4 text-white"></i>
+                  <i class="bi bi-three-dots fa-2x mt-3 me-4 text-white"></i>
                 </div>
               </div>
-              <hr />
-              <div id="trackList" class="row mt-2 text-secondary"></div>
+              <div class="col-12" style="padding-inline: 30px">
+                <div class="row mt-2 text-secondary">
+                  <div class="col-1">
+                    <h6>#</h6>
+                  </div>
+                  <div class="col-6">
+                    <h6>TITOLO</h6>
+                  </div>
+                  <div class="col-4 ps-4">
+                    <h6>CLASSIFICA</h6>
+                  </div>
+                  <div class="col-1 ps-4">
+                    <h6><i class="bi bi-clock"></i></h6>
+                  </div>
+                </div>
+                <hr />
+                <div id="trackList" class="row mt-2 text-secondary"></div>
+              </div>
             </div>
           </main>
         </div>
@@ -332,5 +345,6 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"
   ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
   <script src="./albumScript.js"></script>
 </html>
