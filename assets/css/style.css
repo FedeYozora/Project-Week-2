@@ -8,7 +8,7 @@
 body {
   font-family: "Circular";
   color: white;
-  background: rgb(17, 17, 17);
+  /* background: rgb(17, 17, 17); */
   background: linear-gradient(
     0deg,
     rgba(17, 17, 17, 17) 33%,

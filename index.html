@@ -111,7 +111,7 @@
             </ul>
             <button
               id="sidebarButton"
-              class="btn arrowsTop rounded-circle friends d-none"
+              class="btn arrowsTop rounded-circle friends d-none d-none d-sm-block"
             >
               <i class="fa-solid fa-users"></i>
             </button>
@@ -136,7 +136,18 @@
           </div>
           <!--  div Buonasera   -->
           <div class="mb-4">
-            <p class="h3">Buonasera</p>
+            <div class="d-flex mt-4 mt-sm-1">
+              <p class="h3 d-inline-block d-sm-block">Buonasera</p>
+              <div class="d-inline-block d-sm-none fs-5 ms-auto">
+                <i class="fa-regular fa-bell ms-4"></i>
+                <i class="fa-regular fa-clock ms-4"></i>
+                <i class="fa-solid fa-gear ms-4"></i>
+              </div>
+            </div>
+            <div class="d-flex d-sm-none gap-5 mt-3 mb-3">
+              <p class="ms-3">Musica</p>
+              <p class="fs-6">Podcast e show</p>
+            </div>
             <div
               id="albumRow"
               class="row row-cols-2 row-cols-lg-3 row-gap-2 row-gap-lg-4"
@@ -540,5 +551,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./indexScript.js"></script>
+    <script src="./sidebarScript.js"></script>
   </body>
 </html>

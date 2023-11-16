@@ -15,11 +15,11 @@ function loadItems(url) {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   })
-    .then(resp => resp.json())
-    .then(albumObj => {
+    .then((resp) => resp.json())
+    .then((albumObj) => {
       const len = albumObj.data.length - 1;
       let htmlString = "";
       let albumhtml = "";
@@ -86,21 +86,6 @@ function loadItems(url) {
       }
     });
 }
-const closeButton = document.getElementById("closeBtn");
-const centralColumn = document.getElementById("centralCol");
-const rightColumn = document.getElementById("rightCol");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  // rightColumn.style.position = "unset";
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};
 
 function removeDuplicates() {
   let artistNamesDupe = document.getElementsByClassName("cardArtist");
@@ -123,8 +108,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
