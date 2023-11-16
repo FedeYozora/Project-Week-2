@@ -70,7 +70,9 @@ hr {
 }
 
 .scrollableMain {
-  height: 880px; /* Adjust this value according to your desired list height */
+  height: calc(
+    100vh - 80px
+  ); /* Adjust this value according to your desired list height */
   overflow-y: auto;
   /* border: 1px solid #ccc; */
   padding: 5px;
