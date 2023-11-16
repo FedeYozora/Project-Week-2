@@ -162,7 +162,7 @@ if (artistID) {
       const len = albumObj.data.length - 1;
       let htmlString = "";
       let albumhtml = "";
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 10; i++) {
         let title = albumObj.data[i].title;
         let artistName = albumObj.data[i].artist.name;
         let duration = albumObj.data[i].duration;

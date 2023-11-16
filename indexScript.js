@@ -24,7 +24,7 @@ async function fetchMainAlbum() {
     // const albumMinutes = Math.floor(albumObj.duration / 60);
     // const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
-    container.innerHTML = `<img style="width: 300px;" src="${albumObj.data[0].album.cover_medium}" alt="" class="py-4">
+    container.innerHTML = `<a href="./albumPage.html?albumID=68346981"><img style="width: 300px;" src="${albumObj.data[0].album.cover_medium}" alt="" class="py-4"></a>
       <div class="row py-2" style="align-content: center;">
         <div class="col gx-5">
           <p class="d-inline-block">Album</p>
