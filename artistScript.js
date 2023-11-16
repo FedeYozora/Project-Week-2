@@ -153,12 +153,11 @@ const play = event => {
   playPauseIntervalId = updateTimeStamp(
     parseTimeFromString(currentTime.innerText)
   );
-const miniPlayer = document.getElementById("mini-player");
-const row = miniPlayer.children[0];
-row.children[0].children[0].src = song.album.cover; 
-row.children[1].children[0].innerText = song.title;
-row.children[1].children[1].innerText = song.artist.name
-
+  const miniPlayer = document.getElementById("mini-player");
+  const row = miniPlayer.children[0];
+  row.children[0].children[0].src = song.album.cover;
+  row.children[1].children[0].innerText = song.title;
+  row.children[1].children[1].innerText = song.artist.name;
 };
 
 const pause = () => {
