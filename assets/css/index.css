@@ -1,65 +1,75 @@
-
 body {
-    color: white;
-    background: rgb(17,17,17);
-    background: linear-gradient(0deg, rgba(17,17,17,17) 33%, rgba(33,33,33,1) 100%);
+  color: white;
+  background: rgb(17, 17, 17);
+  background: linear-gradient(
+    0deg,
+    rgba(17, 17, 17, 17) 33%,
+    rgba(33, 33, 33, 1) 100%
+  );
 }
 .userBadge {
-    background-color: #0a0a0a;
-    padding: 3px;
-    margin-left: auto;
+  background-color: #0a0a0a;
+  padding: 3px;
+  margin-left: auto;
 }
 .userBadge p {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
-.arrowsTop  {
-    background-color: #131313;
-    color: white;
-    font-weight: 900;
+.arrowsTop {
+  background-color: #131313;
+  color: white;
+  font-weight: 900;
 }
 .ad {
-    background: rgb(0,0,0);
-background: linear-gradient(17deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    17deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(31, 31, 31, 1) 100%
+  );
 }
 .playlistsHome {
-    background-color: #2d2d2d;
+  background-color: #2d2d2d;
 }
 .playBtn {
-    background-color: #1ed760;
-    padding: 10px 25px;
-    margin-right: 1rem;
-    transition: padding 150ms;
+  background-color: #1ed760;
+  padding: 10px 25px;
+  margin-right: 1rem;
+  transition: padding 150ms;
 }
 .saveBtn {
-    color: white;
-    background-color: transparent;
-    border: 1px solid white;
-    padding: 10px 25px;
-    transition: padding 150ms;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 10px 25px;
+  transition: padding 150ms;
 }
 .playBtn:hover {
-    background-color: #12bd4d;
-    color: black;
-    padding: 13px 28px;
+  background-color: #12bd4d;
+  color: black;
+  scale: 1.1;
 }
 .saveBtn:hover {
-    background-color: rgba(255, 255, 255, 0.158);
-    border: 1px solid white;
-    padding: 13px 28px;
+  background-color: rgba(255, 255, 255, 0.158);
+  border: 1px solid white;
+  scale: 1.1;
 }
 .playlistName {
-    margin-block: auto;
-    font-weight: 600;
+  margin-block: auto;
+  font-weight: 600;
 }
 .musicCards {
-    background-color: #171717;
+  background-color: #171717;
 }
 .subtitle {
-    color: #838383;
-    font-size: 0.9rem;
-
+  color: #838383;
+  font-size: 0.9rem;
 }
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
+}
+.friends {
+  width: 40px;
+  padding-left: 10px;
 }

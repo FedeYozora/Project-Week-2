@@ -18,13 +18,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
     <link rel="stylesheet" href="./assets/css/album.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" style="height: 100vh">
         <div class="col-3 sidebar">
           <div class="logo">
             <img src="./assets/imgs/LogoWhite.png" alt="Logo Spotify" />
@@ -32,22 +33,17 @@
           <div class="navigation">
             <ul>
               <li>
-                <a href="#">
+                <a href="./index.html">
                   <span class="fa-solid fa-home"></span>
                   <span>Home</span>
                 </a>
               </li>
               <li>
-                <a href="#" id="searchLink">
+                <a href="./searchPage.html" id="searchLink">
                   <span class="fa-solid fa-search"></span>
                   <span>Cerca</span>
                 </a>
               </li>
-              <div class="search" id="search">
-                <form id="form" class="form-inline my-2 my-lg-0">
-                  <input id="searchInput" type="text" placeholder="Cerca" />
-                </form>
-              </div>
               <li>
                 <a href="#">
                   <span class="fa-solid fa-book"></span>
@@ -80,127 +76,123 @@
           </div>
           <hr />
           <div class="scrollable">
-            <ul>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <li>Playlist Placeholder</li>
-              <!-- Add more items here -->
-            </ul>
+            <ul id="playlistElenco"></ul>
           </div>
         </div>
-        <div class="col-7 offset-3 px-0" style="margin-bottom: 90px">
-          <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <a
-              class="nav-item nav-link bg-dark rounded-circle ms-4 p-1"
-              href="#"
-              ><img src="./assets/imgs/back_navigation.png" alt=""
-            /></a>
-            <a
-              class="nav-item nav-link bg-dark rounded-circle ms-2 p-1"
-              href="#"
-              ><img src="./assets/imgs/forward_navigation.png" alt=""
-            /></a>
-            <div class="blank"></div>
-            <button
-              class="btn btn-secondary dropdown-toggle rounded-pill me-4"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                id="userAvatar"
-                class="me-2"
-                src="./assets/imgs/user.png"
-                alt=""
-              />Epicode User
-            </button>
-            <button id="sidebarButton" class="btn btn-secondary rounded-pill me-3">
-              <i class="fas fa-users"></i>
-            </button>
-          </nav>
-          <div class="container-fluid mt-5">
-            <div
-              id="albumInfo"
-              class="row align-items-center"
-              style="padding-inline: 30px"
-            >
-              <div class="col-3">
-                <img src="./assets/imgs/album.jpg" alt="" />
-              </div>
-              <div class="col-8 offset-1 text-white">
-                <h6 class="mt-5">Album</h6>
-                <h1 class="albumName">Nome Album</h1>
-                <div>
-                  <img class="artistImg" src="" alt="" />
-                  <span class="artistName">Nome Artista</span>
-                  <span class="releaseYear"> Anno Uscita</span>
-                  <span class="songCount">Numero Brani</span>
-                  <span class="duration">Durata</span>
+        <div
+          class="col-7 offset-3 px-0 scrollableMain"
+          style="margin-bottom: 90px"
+        >
+          <main class="py-3">
+            <div class="d-flex align-items-center gap-4 px-4 mb-3">
+              <button
+                onclick="history.back()"
+                class="btn arrowsTop rounded-circle"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button
+                onclick="history.forward()"
+                class="btn arrowsTop rounded-circle"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+              <div class="blank"></div>
+              <button
+                class="btn btn-secondary dropdown-toggle rounded-pill"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  id="userAvatar"
+                  class="me-2"
+                  src="./assets/imgs/user.png"
+                  alt=""
+                />Epicode User
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+                <li><a class="dropdown-item" href="#">Preferenze Utente</a></li>
+                <li><a class="dropdown-item" href="#">Disconnetti</a></li>
+              </ul>
+              <button
+                id="sidebarButton"
+                class="btn arrowsTop rounded-circle friends d-none"
+              >
+                <i class="fa-solid fa-users"></i>
+              </button>
+            </div>
+            <div class="container-fluid mt-2">
+              <div
+                id="albumInfo"
+                class="row align-items-center"
+                style="padding-inline: 30px"
+              >
+                <div class="col-3">
+                  <img src="" alt="" />
+                </div>
+                <div class="col-8 offset-1 text-white">
+                  <h6 class="mt-5"></h6>
+                  <h1 class="albumName"></h1>
+                  <div>
+                    <img class="artistImg" src="" alt="" />
+                    <span class="artistName"></span>
+                    <span class="releaseYear"> </span>
+                    <span class="songCount"></span>
+                    <span class="duration"></span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="d-flex align-items-center" style="padding-inline: 30px">
-              <i class="bi bi-play-circle fa-4x mt-3 me-5 text-success"></i>
-              <i class="bi bi-heart fa-2x mt-3 me-4 text-white"></i>
-              <i class="bi bi-download fa-2x mt-3 me-4 text-white"></i>
-              <i class="bi bi-three-dots fa-2x mt-3 me-4 text-white"></i>
-            </div>
-          </div>
-          <div class="col-12" style="padding-inline: 30px">
-            <div class="row mt-2 text-secondary">
-              <div class="col-1">
-                <h6>#</h6>
-              </div>
-              <div class="col-6">
-                <h6>TITOLO</h6>
-              </div>
-              <div class="col-4 ps-4">
-                <h6>CLASSIFICA</h6>
-              </div>
-              <div class="col-1 ps-4">
-                <h6><i class="bi bi-clock"></i></h6>
+            <div class="col-12">
+              <div
+                class="d-flex align-items-center"
+                style="padding-inline: 30px"
+              >
+                <i class="bi bi-play-circle fa-4x mt-3 me-5 text-success"></i>
+                <i class="bi bi-heart fa-2x mt-3 me-4 text-white"></i>
+                <i class="bi bi-download fa-2x mt-3 me-4 text-white"></i>
+                <i class="bi bi-three-dots fa-2x mt-3 me-4 text-white"></i>
               </div>
             </div>
-            <hr />
-            <div id="trackList" class="row mt-2 text-secondary"></div>
-          </div>
+            <div class="col-12" style="padding-inline: 30px">
+              <div class="row mt-2 text-secondary">
+                <div class="col-1">
+                  <h6>#</h6>
+                </div>
+                <div class="col-6">
+                  <h6>TITOLO</h6>
+                </div>
+                <div class="col-4 ps-4">
+                  <h6>CLASSIFICA</h6>
+                </div>
+                <div class="col-1 ps-4">
+                  <h6><i class="bi bi-clock"></i></h6>
+                </div>
+              </div>
+              <hr />
+              <div id="trackList" class="row mt-2 text-secondary"></div>
+            </div>
+          </main>
         </div>
         <div
           class="col-2 vh-100 pt-2 mb-3"
           style="background-color: black; position: fixed; right: 0"
         >
-        <div class="row">
-          <div class="col-7">
-            <h4 class="text-white">Attività amici</h4>
+          <div class="row mt-3">
+            <div class="col-7">
+              <h4 class="text-white">Attività amici</h4>
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+              <button><i class="fas fa-user-friends me-2"></i></button>
+              <button><i class="fas fa-times ps-2 pe-2"></i></button>
+            </div>
           </div>
-          <div class="col-5 d-flex justify-content-end">
-            <button><i class="fas fa-user-friends me-2"></i></button>
-            <button><i class="fas fa-times ps-2 pe-2"></i></button>
-        </div>
-        </div>
-        <h6 class="mt-5" style="color: lightgrey">
-          Consenti ad amici e follower su spotify di visualizzare cosa stai
-          ascoltando.
-        </h6>
-          
+          <h6 class="mt-5" style="color: lightgrey">
+            Consenti ad amici e follower su spotify di visualizzare cosa stai
+            ascoltando.
+          </h6>
 
           <div class="row">
             <div class="col-2">
@@ -334,5 +326,10 @@
       </div>
     </div>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+  ></script>
   <script src="./albumScript.js"></script>
 </html>

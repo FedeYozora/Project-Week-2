@@ -1,23 +1,30 @@
+fetchPlaylist();
+
 const params = new URLSearchParams(window.location.search);
 const artistID = params.get("artistID");
+let artistName;
+let playPauseIntervalId;
 console.log("ARTIST ID: ", artistID);
-window.onload = () => {
-  const container = document.getElementById("albumInfo");
-  const containerTrack = document.getElementById("trackList");
 
-  fetch("https://api.deezer.com/artist/" + artistID + "?limit=10", {
+const container = document.getElementById("albumInfo");
+const containerTrack = document.getElementById("trackList");
+const containerPlaylist = document.getElementById("playlistElenco");
+
+fetch(
+  "https://striveschool-api.herokuapp.com/api/deezer/artist/" +
+    artistID +
+    "/top?limit=10",
+  {
     method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-    }
-  })
-    .then(resp => resp.json())
-    .then(albumObj => {
-      let imgArtist = albumObj.data[0].contributors[0].picture_xl;
-      let contributorName = albumObj.data[0].contributors[0].name;
-      let fanNumber = albumObj.data[0].rank;
-      container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-size: cover;">
+    headers: { Accept: "application/json" },
+  }
+)
+  .then(resp => resp.json())
+  .then(artistTracks => {
+    let imgArtist = artistTracks.data[0].contributors[0].picture_big;
+    let contributorName = artistTracks.data[0].contributors[0].name;
+    let fanNumber = artistTracks.data[0].rank;
+    container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
             <div class="col-5">
             <img style="width:20px; display: inline-block;" class="mb-1" src="./assets/imgs/verified-logo.png" alt="" />
@@ -28,33 +35,37 @@ window.onload = () => {
           </div>
         </div>`;
 
-      const len = albumObj.tracks.data.length;
-      let htmlString = "";
-      for (let i = 0; i < len; i++) {
-        let title = albumObj.data[i].title;
-        let artistName = albumObj.data[i].artist.name;
-        let duration = albumObj.data[i].duration;
-        let artistImg = albumObj.data[i].album.cover;
-        let artistId = albumObj.data[i].artist.id;
-        const trackMinutes = Math.floor(duration / 60);
-        let trackSeconds = Math.round(duration - trackMinutes * 60);
-        if (trackSeconds < 10) {
-          trackSeconds = trackSeconds.toString();
-          trackSeconds = `0` + trackSeconds;
-        }
-        let rank = albumObj.data[i].rank;
+    artistName = artistTracks.data[0].artist.name;
+    localStorage.setItem(artistName, JSON.stringify(artistTracks.data));
 
-        htmlString += `<div class="col-1">
+    const len = artistTracks.data.length;
+    let htmlString = "";
+    for (let i = 0; i < len; i++) {
+      const song = artistTracks.data[i];
+      let title = song.title;
+      let artistName = song.artist.name;
+      let duration = song.duration;
+      let artistImg = song.album.cover;
+      let artistId = song.artist.id;
+      const trackMinutes = Math.floor(duration / 60);
+      let trackSeconds = Math.round(duration - trackMinutes * 60);
+      if (trackSeconds < 10) {
+        trackSeconds = trackSeconds.toString();
+        trackSeconds = `0` + trackSeconds;
+      }
+      let rank = song.rank;
+
+      htmlString += `<div class="col-1">
         <h6>${i + 1}</h6>
         </div>
         <div class="col-1">
         <img class="artistImg" style="width: -webkit-fill-available;" src="${artistImg}" style="scale: 0.7" alt="">
         </div>
         <div class="col-5">
-        <h6 class="text-white mb-1" style="text-overflow: ellipsis;white-space: nowrap;
-        overflow: hidden;">${title}</h6>
+        <h6 class="text-white mt-2 mb-0" style="text-overflow: ellipsis;white-space: nowrap;
+        overflow: hidden;" onclick="play(event)">${title}</h6>
         <a style="text-decoration: none;
-        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6>${artistName}</h6></a>
+        color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
@@ -62,26 +73,88 @@ window.onload = () => {
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
         </div>`;
-      }
-      containerTrack.innerHTML = htmlString;
-    });
-};
+    }
+    containerTrack.innerHTML = htmlString;
+  });
 
-const closeButton = document.querySelector(".fas.fa-times").parentElement;
-const centralColumn = document.querySelector(".container-fluid .row .col-7");
-const rightColumn = document.querySelector(".container-fluid .row .col-2");
+const closeButton = document.getElementById("closeBtn");
+const centralColumn = document.getElementById("centralCol");
+const rightColumn = document.getElementById("rightCol");
 const sideBarButton = document.getElementById("sidebarButton");
 sideBarButton.onclick = () => {
   rightColumn.classList.remove("d-none");
-  rightColumn.style.position = "fixed"
   centralColumn.classList.remove("col-9");
-
+  sideBarButton.classList.add("d-none");
 };
 
 closeButton.onclick = () => {
   rightColumn.classList.add("d-none");
-  rightColumn.style.position = "unset"
   centralColumn.classList.add("col-9");
   sideBarButton.classList.remove("d-none");
-  
+};
+
+async function fetchPlaylist() {
+  try {
+    const response = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/playlist/235`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      }
+    );
+    const albumObj = await response.json();
+
+    let playlistString = "";
+    let playlistTitle = albumObj.title;
+    playlistString += `<a href="./searchPage.html?artistID=rock"><li>${playlistTitle}</li></a>
+    <a href="./searchPage.html?artistID=Eminem"><li>Eminem</li></a>
+    <a href="./searchPage.html?artistID=Imagine+Dragons"><li>Imagine Dragons</li></a>
+    <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
+    <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
+    <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
+    containerPlaylist.innerHTML = playlistString;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+const playBtn = document.getElementById("play-btn");
+const currentTime = document.querySelector(".current-time");
+const totalTime = document.querySelector(".total-time");
+const timeSlider = document.querySelector(".timeline-slider");
+
+const parseTimeFromString = timeString => {
+  return timeString.split(":").reduce((acc, time) => 60 * acc + +time);
+};
+
+const parseTimeToString = time => {
+  return new Date(time * 1000).toISOString().substring(14, 19);
+};
+
+const updateTimeStamp = prevValue => {
+  let intervalId = setInterval(() => {
+    const newValue = ++prevValue;
+    currentTime.innerText = parseTimeToString(newValue);
+    timeSlider.value = newValue;
+  }, 1000);
+  return intervalId;
+};
+
+const play = event => {
+  const song = JSON.parse(localStorage.getItem(artistName)).find(
+    song => song.title === event.currentTarget.innerText
+  );
+  timeSlider.max = song.duration;
+  totalTime.innerText = parseTimeToString(song.duration);
+  playPauseIntervalId = updateTimeStamp(
+    parseTimeFromString(currentTime.innerText)
+  );
+};
+
+const pause = () => {
+  clearInterval(playPauseIntervalId);
 };

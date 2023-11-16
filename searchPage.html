@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/search.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
+    <link rel="stylesheet" href="./assets/css/album.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row" style="height: 100vh">
+        <div class="col-3 sidebar">
+          <div class="logo">
+            <img src="./assets/imgs/LogoWhite.png" alt="Logo Spotify" />
+          </div>
+          <div class="navigation">
+            <ul>
+              <li>
+                <a href="./index.html">
+                  <span class="fa-solid fa-home"></span>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="./searchPage.html" id="searchLink">
+                  <span class="fa-solid fa-search"></span>
+                  <span>Cerca</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-book"></span>
+                  <span>La tua libreria</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="navigation">
+            <ul>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-plus-square"></span>
+                  <span>Crea Playlist</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-heart"></span>
+                  <span>Brani che ti piacciono</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="fa-solid fa-bookmark"></span>
+                  <span>I tuoi episodi</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div class="scrollable">
+            <ul id="playlistElenco"></ul>
+          </div>
+        </div>
+        <div
+          id="centralCol"
+          class="col-7 offset-3 px-0"
+          style="margin-bottom: 90px"
+        >
+          <main class="p-4 mainScrollable">
+            <div class="row mb-3">
+              <div class="col d-flex align-items-center gap-3">
+                <button
+                  onclick="history.back()"
+                  class="btn arrowsTop rounded-circle me-2"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button
+                  onclick="history.forward()"
+                  class="btn arrowsTop rounded-circle me-2"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <div class="form d-inline-block">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <form id="form">
+                    <input
+                      id="searchInput"
+                      type="text"
+                      class="rounded-pill py-2 ps-3"
+                      placeholder="     Cosa vuoi ascoltare?"
+                      style="padding-inline: 7px"
+                    />
+                  </form>
+                </div>
+                <div class="blank"></div>
+                <button
+                  class="btn btn-secondary dropdown-toggle rounded-pill"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    id="userAvatar"
+                    class="me-2"
+                    src="./assets/imgs/user.png"
+                    alt=""
+                  />Epicode User
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Preferenze Utente</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Disconnetti</a></li>
+                </ul>
+                <button
+                  id="sidebarButton"
+                  class="btn arrowsTop rounded-circle friends d-none"
+                >
+                  <i class="fa-solid fa-users"></i>
+                </button>
+              </div>
+            </div>
+            <p id="textBrani" class="h4 fw-bold">Sfoglia tutto</p>
+            <div>
+              <div
+                id="rowSearch"
+                class="row row-gap-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6"
+              >
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Podcast</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-1.jpeg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Lo-Fi</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-10.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Sleep</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-18.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Rock</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-7.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Party Songs</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-27.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Metal</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-31.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Punk</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-33.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Pop</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-42.png"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Arab Pop</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-41.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Gaming</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-52.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Car Songs</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-11.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="searchCard rounded ps-4">
+                    <p class="h5 fw-bold mt-3">Gym Music</p>
+                    <div class="d-flex">
+                      <img
+                        src="./assets/imgs/search/image-8.jpg"
+                        alt=""
+                        width="100px"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p id="textAlbum" class="h4 fw-bold mt-4 d-none">Artisti</p>
+              <div
+                id="albumRow"
+                class="row row-gap-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6"
+              ></div>
+            </div>
+          </main>
+        </div>
+        <div
+          class="col-2 vh-100 pt-2 mb-3"
+          style="background-color: black; position: fixed; right: 0"
+          id="rightCol"
+        >
+          <div class="row mt-3">
+            <div class="col-7">
+              <h4 class="text-white">Attività amici</h4>
+            </div>
+            <div class="col-5 d-flex justify-content-end">
+              <button><i class="fas fa-user-friends me-2"></i></button>
+              <button>
+                <i id="closeBtn" class="fas fa-times ps-2 pe-2"></i>
+              </button>
+            </div>
+          </div>
+          <h6 class="mt-5" style="color: lightgrey">
+            Consenti ad amici e follower su spotify di visualizzare cosa stai
+            ascoltando.
+          </h6>
+
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture1.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">Charlie Hookham</h6>
+              <p class="mb-0" style="color: lightgrey">
+                In camera · Yumi Zouma
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">EP III</span>
+            </div>
+            <div class="col-3">
+              <p style="color: lightgrey" class="mt-3">4 ore</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture2.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">lightdark02</h6>
+              <p class="mb-0" style="color: lightgrey">
+                Aimed to Kill · Jade LeMac
+              </p>
+              <i class="fas fa-record-vinyl"></i>
+              <span style="color: lightgrey">Aimed to Kill</span>
+            </div>
+            <div class="col-3 mt-3">
+              <p style="color: lightgrey">8 ore</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="./assets/imgs/friendPicture3.jpeg"
+                alt="profile-picture"
+                class="rounded-pill ms-2 mt-3"
+                style="width: 100%"
+              />
+            </div>
+            <div class="col-7">
+              <h6 class="mt-3" style="color: lightgrey">Valeria Traverso</h6>
+              <p class="mb-0" style="color: lightgrey">
+                New Kings · Sleeping Wolf
+              </p>
+              <i class="fab fa-itunes-note"></i>
+              <span style="color: lightgrey">Twint Badass Mood</span>
+            </div>
+            <div class="col-3 mt-3">
+              <p style="color: lightgrey">3 giorni</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="player">
+      <div class="volume-controls"></div>
+      <div class="player-center">
+        <div class="player-controls">
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/shuffle.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/previous_musicbar.png"
+          />
+          <img
+            style="height: 2rem; margin-right: 1rem"
+            src="./assets/./imgs/play_musicbar.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/next_musicbar.png"
+          />
+          <img
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            src="./assets/./imgs/loop.png"
+          />
+        </div>
+        <div class="player-timeline">
+          <span class="current-time">0:00</span>
+          <input
+            type="range"
+            class="timeline-slider"
+            min="0"
+            max="100"
+            step="1"
+            value="0"
+          />
+          <span class="total-time">0:00</span>
+        </div>
+      </div>
+
+      <div class="volume-controls">
+        <img
+          src="./assets/./imgs/queue.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Volume"
+        />
+        <img
+          src="./assets/./imgs/device.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Settings"
+        />
+        <img
+          src="./assets/./imgs/music.png"
+          style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+          alt="Fullscreen"
+        />
+        <input
+          type="range"
+          class="volume-slider"
+          min="0"
+          max="100"
+          step="1"
+          value="50"
+        />
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/e6a7f1bb81.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./searchScript.js" defer></script>
+  </body>
+</html>
