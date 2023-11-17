@@ -62,7 +62,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         <div class="col-1">
         <h6>${i + 1}</h6>
         </div>
-        <div class="col-6">
+        <div class="col-5">
         <h6 class="text-white mt-2" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
