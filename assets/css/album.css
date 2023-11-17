@@ -5,11 +5,20 @@
 .blank {
   flex-grow: 1;
 }
-#divBlured {
+#dominant-bg {
   height: 500px;
 }
 @media screen and (max-width: 575px) {
-#divBlured {
+#dominant-bg {
   height: 650px;
 }
 }
+/* #dominant-bg {
+  height: 500px;
+}
+@media screen and (max-width: 575px) {
+
+  #dominant-bg {
+  height: 700px;
+}
+} */
