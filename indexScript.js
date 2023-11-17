@@ -2,9 +2,15 @@ const container = document.getElementById("albumMain");
 const containerAlbum = document.getElementById("albumRow");
 const containerPlaylist = document.getElementById("playlistElenco");
 
-fetchMainAlbum();
-fetchAlbums();
-fetchPlaylist();
+const getLikedSongs = () => {
+  return JSON.parse(localStorage.getItem("likedSongs"));
+}
+
+Promise.all([fetchMainAlbum(), fetchAlbums(), fetchPlaylist()])
+    .then(() => {
+      getLikedSongs()
+      // ...render saved songs
+    })
 
 async function fetchMainAlbum() {
   try {
@@ -129,3 +135,5 @@ async function fetchPlaylist() {
     console.error("Error:", error);
   }
 }
+
+

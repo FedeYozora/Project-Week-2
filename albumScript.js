@@ -4,6 +4,7 @@ const params = new URLSearchParams(window.location.search);
 const albumID = params.get("albumID");
 console.log("ALBUM ID: ", albumID);
 
+let albumStorageId;
 const container = document.getElementById("albumInfo");
 const containerTrack = document.getElementById("trackList");
 const containerPlaylist = document.getElementById("playlistElenco");
@@ -38,30 +39,37 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
       <span class="duration fs-6">${albumMinutes} min ${albumSeconds} sec.</span>
       </div>`;
 
+    albumStorageId = `${albumObj.title}.${albumObj.id}`;
+    localStorage.setItem(albumStorageId, JSON.stringify(albumObj.tracks.data));
+
     const len = albumObj.tracks.data.length;
     let htmlString = "";
     for (let i = 0; i < len; i++) {
-      let title = albumObj.tracks.data[i].title;
-      let artistName = albumObj.tracks.data[i].artist.name;
-      let duration = albumObj.tracks.data[i].duration;
-      let artistId = albumObj.tracks.data[i].artist.id;
+      const song = albumObj.tracks.data[i];
+      const title = song.title;
+      const artistName = song.artist.name;
+      const duration = song.duration;
+      const artistId = song.artist.id;
       const trackMinutes = Math.floor(duration / 60);
       let trackSeconds = Math.round(duration - trackMinutes * 60);
       if (trackSeconds < 10) {
         trackSeconds = trackSeconds.toString();
         trackSeconds = `0` + trackSeconds;
       }
-      let rank = albumObj.tracks.data[i].rank;
+      let rank = song.rank;
 
       htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">
         <h6>${i + 1}</h6>
         </div>
-        <div class="col-6">
+        <div class="col-5">
         <h6 class="text-white mt-2" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
+        </div>
+        <div class="col-1" onclick="saveToLikedSongs(event)">
+        <a href="#"><i id="${song.id}" class="bi bi-heart mt-3 me-4 text-white"></i></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
@@ -143,22 +151,52 @@ async function fetchPlaylist() {
   }
 }
 
-const colorThief = new ColorThief();
-const img = document.querySelector("img");
-
-// Make sure image is finished loading
-if (img.complete) {
-  colorThief.getColor(img);
-} else {
-  image.addEventListener("load", function () {
-    colorThief.getColor(img);
-  });
+const getLikedSongs = () => {
+  return JSON.parse(localStorage.getItem("likedSongs"));
 }
-console.log(colorThief.getColor(img));
 
-const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
-  const hex = x.toString(16)
-  return hex.length === 1 ? '0' + hex : hex
-}).join('')
+const getCurrentAlbum = () => {
+  return JSON.parse(localStorage.getItem(albumStorageId));
+}
+const saveSong = (song) => {
+  const savedSongs = getLikedSongs() ?? [];
+  const songToAdd = {
+    id: song.id,
+    title: song.title,
+    artistName: song.artist.name
+  }
 
-rgbToHex(102, 51, 153); // #663399
+  if (savedSongs.find(song => song.id === songToAdd.id)) {
+    savedSongs.splice(savedSongs.indexOf(songToAdd), 1);
+    localStorage.setItem("likedSongs", JSON.stringify([...savedSongs]));
+    return false;
+  }
+
+  localStorage.setItem("likedSongs", JSON.stringify([...savedSongs, songToAdd]));
+  return true;
+}
+
+const saveToLikedSongs = (ev, ...songs) => {
+  if (ev) {
+    const songId = parseInt(ev.target.id);
+    const song = getCurrentAlbum().find(song => song.id === songId);
+    if (!song) {
+      console.error("song not found. unable to save")
+    }
+    const saved = saveSong(song);
+    if (!saved) {
+      console.log("deleted")
+      ev.target.classList.add("text-white", "no-before")
+      delete ev.target.style;
+      // ev.target.style.cssText = "color: white";
+    }
+    ev.target.classList.remove("text-white", "no-before")
+    ev.target.style.color = "green";
+  }
+
+  if (songs.length === 0) {
+    return;
+  }
+
+  songs.forEach(saveSong)
+}
