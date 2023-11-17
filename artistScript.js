@@ -16,11 +16,11 @@ fetch(
     "/top?limit=10",
   {
     method: "GET",
-    headers: { Accept: "application/json" }
+    headers: { Accept: "application/json" },
   }
 )
-  .then((resp) => resp.json())
-  .then((artistTracks) => {
+  .then(resp => resp.json())
+  .then(artistTracks => {
     let imgArtist = artistTracks.data[0].contributors[0].picture_big;
     let contributorName = artistTracks.data[0].contributors[0].name;
     let fanNumber = artistTracks.data[0].rank;
@@ -35,7 +35,7 @@ fetch(
             <div class="col-5">
             <img style="width:20px; display: inline-block;" class="mb-1" src="./assets/imgs/verified-logo.png" alt="" />
               <h6 class="mb-3 d-inline-block">Artista verificato</h6>
-              <h1 style="font-size: 4.5rem;line-height: 55px;">${contributorName}</h1>
+              <h1 style="font-size: 4.5rem;line-height: 55px;text-shadow: 3px 4px 2px #000000;">${contributorName}</h1>
               <h6 class="mt-5 mb-3">${fanNumber} fans</h6>
             </div>
           </div>
@@ -92,8 +92,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
@@ -123,15 +123,15 @@ const currentTime = document.querySelector(".current-time");
 const totalTime = document.querySelector(".total-time");
 const timeSlider = document.querySelector(".timeline-slider");
 
-const parseTimeFromString = (timeString) => {
+const parseTimeFromString = timeString => {
   return timeString.split(":").reduce((acc, time) => 60 * acc + +time);
 };
 
-const parseTimeToString = (time) => {
+const parseTimeToString = time => {
   return new Date(time * 1000).toISOString().substring(14, 19);
 };
 
-const updateTimeStamp = (prevValue) => {
+const updateTimeStamp = prevValue => {
   let intervalId = setInterval(() => {
     const newValue = ++prevValue;
     currentTime.innerText = parseTimeToString(newValue);
@@ -140,9 +140,9 @@ const updateTimeStamp = (prevValue) => {
   return intervalId;
 };
 
-const play = (event) => {
+const play = event => {
   const song = JSON.parse(localStorage.getItem(artistName)).find(
-    (song) => song.title === event.currentTarget.innerText
+    song => song.title === event.currentTarget.innerText
   );
   timeSlider.max = song.duration;
   totalTime.innerText = parseTimeToString(song.duration);
