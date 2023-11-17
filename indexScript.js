@@ -15,8 +15,8 @@ async function fetchMainAlbum() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -54,8 +54,8 @@ async function fetchAlbums() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -103,8 +103,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -117,25 +117,15 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {
     console.error("Error:", error);
   }
 }
-
-const closeButton = document.getElementById("closeBtn");
-const centralColumn = document.getElementById("centralCol");
-const rightColumn = document.getElementById("rightCol");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-  sideBarButton.classList.add("d-none");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};

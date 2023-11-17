@@ -5,3 +5,20 @@
 .blank {
   flex-grow: 1;
 }
+#dominant-bg {
+  height: 550px;
+}
+@media (min-width: 426px) and (max-width: 575px) {
+  #dominant-bg {
+    height: 680px;
+  }
+  .scrollableMain {
+    height: calc(100vh - 140px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #dominant-bg {
+    height: 600px;
+  }
+}

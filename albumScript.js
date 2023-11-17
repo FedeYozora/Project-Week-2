@@ -24,18 +24,18 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     const albumMinutes = Math.floor(albumObj.duration / 60);
     const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
-    container.innerHTML = `<div class="col-3">
-      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="" crossorigin="anonymous">
+    container.innerHTML = `<div class="col-8 col-sm-3">
+      <img id="myImg" src="${albumObj.cover_medium}" style=width:100% alt="" crossorigin="anonymous">
       </div>
-      <div class="col-8 offset-1 text-white"><h6 class="mt-5">Album</h6>
-      <h1 class="albumName" style="font-size: 4rem;">${albumObj.title}</h1>
+      <div class="col-8 offset-sm-1 text-white"><h6 class="mt-5 d-none d-sm-block">Album</h6>
+      <p class="albumName fw-bold fs-1" >${albumObj.title}</p>
       <div>
       <img class="artistImg rounded-circle" src="${albumObj.artist.picture_small}" style="scale: 0.7" alt="">
       <a style="text-decoration: none;
         color: white;" href="./artistPage.html?artistID=${albumObj.artist.id}"><span class="artistName">${albumObj.artist.name} &#8226</span></a>
-      <span class="releaseYear">${albumObj.release_date} &#8226</span>
-      <span class="songCount">${albumObj.nb_tracks} brani,</span>
-      <span class="duration">${albumMinutes} min ${albumSeconds} sec.</span>
+      <span class="releaseYear fs-6">${albumObj.release_date} &#8226</span>
+      <span class="songCount fs-6">${albumObj.nb_tracks} brani,</span>
+      <span class="duration fs-6">${albumMinutes} min ${albumSeconds} sec.</span>
       </div>`;
 
     const len = albumObj.tracks.data.length;
@@ -107,22 +107,6 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     }
   });
 
-const closeButton = document.querySelector(".fas.fa-times").parentElement;
-const centralColumn = document.querySelector(".container-fluid .row .col-7");
-const rightColumn = document.querySelector(".container-fluid .row .col-2");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-  sideBarButton.classList.add("d-none");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};
-
 async function fetchPlaylist() {
   try {
     const response = await fetch(
@@ -146,6 +130,12 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {

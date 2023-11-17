@@ -19,13 +19,19 @@ fetch(
     headers: { Accept: "application/json" }
   }
 )
-  .then(resp => resp.json())
-  .then(artistTracks => {
+  .then((resp) => resp.json())
+  .then((artistTracks) => {
     let imgArtist = artistTracks.data[0].contributors[0].picture_big;
     let contributorName = artistTracks.data[0].contributors[0].name;
     let fanNumber = artistTracks.data[0].rank;
     container.innerHTML = `<div class="container-fluid" style="background-image: url(${imgArtist}); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;">
+            <div id="albumInfo" class="row align-content-end text-white" style="padding-inline: 30px;height: 400px;position: relative;">
+            <button
+            onclick="history.back()"
+            class="btn arrowsTop rounded-circle d-block d-sm-none" style="position: absolute; width:37px; top: 25px;"
+          >
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
             <div class="col-5">
             <img style="width:20px; display: inline-block;" class="mb-1" src="./assets/imgs/verified-logo.png" alt="" />
               <h6 class="mb-3 d-inline-block">Artista verificato</h6>
@@ -77,22 +83,6 @@ fetch(
     containerTrack.innerHTML = htmlString;
   });
 
-const closeButton = document.getElementById("closeBtn");
-const centralColumn = document.getElementById("centralCol");
-const rightColumn = document.getElementById("rightCol");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-  sideBarButton.classList.add("d-none");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};
-
 async function fetchPlaylist() {
   try {
     const response = await fetch(
@@ -116,6 +106,12 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {
@@ -127,15 +123,15 @@ const currentTime = document.querySelector(".current-time");
 const totalTime = document.querySelector(".total-time");
 const timeSlider = document.querySelector(".timeline-slider");
 
-const parseTimeFromString = timeString => {
+const parseTimeFromString = (timeString) => {
   return timeString.split(":").reduce((acc, time) => 60 * acc + +time);
 };
 
-const parseTimeToString = time => {
+const parseTimeToString = (time) => {
   return new Date(time * 1000).toISOString().substring(14, 19);
 };
 
-const updateTimeStamp = prevValue => {
+const updateTimeStamp = (prevValue) => {
   let intervalId = setInterval(() => {
     const newValue = ++prevValue;
     currentTime.innerText = parseTimeToString(newValue);
@@ -144,9 +140,9 @@ const updateTimeStamp = prevValue => {
   return intervalId;
 };
 
-const play = event => {
+const play = (event) => {
   const song = JSON.parse(localStorage.getItem(artistName)).find(
-    song => song.title === event.currentTarget.innerText
+    (song) => song.title === event.currentTarget.innerText
   );
   timeSlider.max = song.duration;
   totalTime.innerText = parseTimeToString(song.duration);
