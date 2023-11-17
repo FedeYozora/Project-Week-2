@@ -1,11 +1,25 @@
 const container = document.getElementById("albumMain");
 const containerAlbum = document.getElementById("albumRow");
 const containerPlaylist = document.getElementById("playlistElenco");
+const library = document.getElementById("library");
 
-fetchMainAlbum();
-fetchAlbums();
-fetchPlaylist();
+const getLikedSongs = () => {
+  return JSON.parse(localStorage.getItem("likedSongs"));
+};
 
+Promise.all([fetchMainAlbum(), fetchAlbums(), fetchPlaylist()]).then(() => {
+  const likedSongs = getLikedSongs();
+  if (!likedSongs || likedSongs.length === 0) {
+    library.parentElement.classList.remove("scrollable");
+    library.remove();
+    return;
+  }
+  likedSongs.forEach(song => {
+    const songNode = document.createElement("li");
+    songNode.innerHTML = `<a id="${song.id}" onclick="play(event)">${song.title} · ${song.artistName}</a>`;
+    library.appendChild(songNode);
+  });
+});
 async function fetchMainAlbum() {
   try {
     const response = await fetch(

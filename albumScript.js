@@ -4,6 +4,7 @@ const params = new URLSearchParams(window.location.search);
 const albumID = params.get("albumID");
 console.log("ALBUM ID: ", albumID);
 
+let albumStorageId;
 const container = document.getElementById("albumInfo");
 const containerTrack = document.getElementById("trackList");
 const containerPlaylist = document.getElementById("playlistElenco");
@@ -38,20 +39,24 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
       <span class="duration fs-6">${albumMinutes} min ${albumSeconds} sec.</span>
       </div>`;
 
+    albumStorageId = `${albumObj.title}.${albumObj.id}`;
+    localStorage.setItem(albumStorageId, JSON.stringify(albumObj.tracks.data));
+
     const len = albumObj.tracks.data.length;
     let htmlString = "";
     for (let i = 0; i < len; i++) {
-      let title = albumObj.tracks.data[i].title;
-      let artistName = albumObj.tracks.data[i].artist.name;
-      let duration = albumObj.tracks.data[i].duration;
-      let artistId = albumObj.tracks.data[i].artist.id;
+      const song = albumObj.tracks.data[i];
+      const title = song.title;
+      const artistName = song.artist.name;
+      const duration = song.duration;
+      const artistId = song.artist.id;
       const trackMinutes = Math.floor(duration / 60);
       let trackSeconds = Math.round(duration - trackMinutes * 60);
       if (trackSeconds < 10) {
         trackSeconds = trackSeconds.toString();
         trackSeconds = `0` + trackSeconds;
       }
-      let rank = albumObj.tracks.data[i].rank;
+      let rank = song.rank;
 
       htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">
@@ -62,6 +67,11 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
+</div>
+        <div class="col-1" onclick="saveToLikedSongs(event)">
+        <a href="#"><i id="${
+          song.id
+        }" class="fa-regular fa-heart mt-3 me-4 text-white"></i></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
@@ -72,6 +82,17 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         </div>`;
     }
     containerTrack.innerHTML = htmlString;
+
+    getLikedSongs()
+      .map(song => song.id)
+      .forEach(id => {
+        toggleLike(
+          true,
+          Array.from(containerTrack.children)
+            .map(track => track.children[2].children[0].children[0])
+            .find(item => id == item.id)
+        );
+      });
   })
   .then(() => {
     const rgbToHex = (r, g, b) =>
@@ -142,3 +163,62 @@ async function fetchPlaylist() {
     console.error("Error:", error);
   }
 }
+
+const getLikedSongs = () => {
+  return JSON.parse(localStorage.getItem("likedSongs"));
+};
+
+const getCurrentAlbum = () => {
+  return JSON.parse(localStorage.getItem(albumStorageId));
+};
+
+const toggleLike = (active, icon) => {
+  if (!active) {
+    icon.classList.replace("fa-solid", "fa-regular");
+    icon.classList.add("text-white");
+    icon.style.cssText = "";
+  } else {
+    icon.classList.remove("text-white");
+    icon.classList.replace("fa-regular", "fa-solid");
+    icon.style.color = "green";
+  }
+};
+
+const saveSong = song => {
+  const savedSongs = getLikedSongs() ?? [];
+  const songToAdd = {
+    id: song.id,
+    title: song.title,
+    artistName: song.artist.name,
+  };
+
+  if (savedSongs.find(song => song.id === songToAdd.id)) {
+    savedSongs.splice(savedSongs.indexOf(songToAdd), 1);
+    localStorage.setItem("likedSongs", JSON.stringify([...savedSongs]));
+    return false;
+  }
+
+  localStorage.setItem(
+    "likedSongs",
+    JSON.stringify([...savedSongs, songToAdd])
+  );
+  return true;
+};
+
+const saveToLikedSongs = (ev, ...songs) => {
+  if (ev) {
+    const songId = parseInt(ev.target?.id ?? ev.target.children[0].id);
+    const song = getCurrentAlbum()?.find(song => song.id === songId);
+    if (!song) {
+      console.error("song not found. unable to save");
+    }
+    const saved = saveSong(song);
+    toggleLike(saved, ev.target);
+  }
+
+  if (songs.length === 0) {
+    return;
+  }
+
+  songs.forEach(saveSong);
+};

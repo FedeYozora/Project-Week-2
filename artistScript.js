@@ -132,12 +132,11 @@ const parseTimeToString = time => {
 };
 
 const updateTimeStamp = prevValue => {
-  let intervalId = setInterval(() => {
+  return setInterval(() => {
     const newValue = ++prevValue;
     currentTime.innerText = parseTimeToString(newValue);
     timeSlider.value = newValue;
   }, 1000);
-  return intervalId;
 };
 
 const play = event => {
