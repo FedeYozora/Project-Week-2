@@ -193,6 +193,9 @@ hr {
     align-items: center;
     border-radius: 5px;
   }
+  .scrollableMain {
+    height: calc(100vh - 140px);
+  }
 }
 
 .volume-controls {
