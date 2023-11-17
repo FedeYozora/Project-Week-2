@@ -16,16 +16,16 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-  }
+    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+  },
 })
-  .then((resp) => resp.json())
-  .then((albumObj) => {
+  .then(resp => resp.json())
+  .then(albumObj => {
     const albumMinutes = Math.floor(albumObj.duration / 60);
     const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
     container.innerHTML = `<div class="col-8 col-sm-3">
-      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="" crossorigin="anonymous">
+      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; alt="" crossorigin="anonymous">
       </div>
       <div class="col-8 offset-sm-1 text-white"><h6 class="mt-5 d-none d-sm-block">Album</h6>
       <p class="albumName fw-bold fs-1" >${albumObj.title}</p>
@@ -77,7 +77,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     const rgbToHex = (r, g, b) =>
       "#" +
       [r, g, b]
-        .map((x) => {
+        .map(x => {
           const hex = x.toString(16);
           return hex.length === 1 ? "0" + hex : hex;
         })
@@ -116,8 +116,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
