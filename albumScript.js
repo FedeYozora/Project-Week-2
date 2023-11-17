@@ -5,6 +5,8 @@ const albumID = params.get("albumID");
 console.log("ALBUM ID: ", albumID);
 
 let albumStorageId;
+let artistName;
+let playPauseIntervalId;
 const container = document.getElementById("albumInfo");
 const containerTrack = document.getElementById("trackList");
 const containerPlaylist = document.getElementById("playlistElenco");
@@ -43,6 +45,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     localStorage.setItem(albumStorageId, JSON.stringify(albumObj.tracks.data));
 
     const len = albumObj.tracks.data.length;
+    artistName = albumObj.tracks.data[0].artist.name;
     let htmlString = "";
     for (let i = 0; i < len; i++) {
       const song = albumObj.tracks.data[i];
@@ -64,7 +67,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         </div>
         <div class="col-5">
         <h6 class="text-white mt-2" style="text-overflow: ellipsis;white-space: nowrap;
-        overflow: hidden;">${title}</h6>
+        overflow: hidden; cursor: pointer;" onclick="play(event)">${title}</h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
 </div>
@@ -221,4 +224,40 @@ const saveToLikedSongs = (ev, ...songs) => {
   }
 
   songs.forEach(saveSong);
+};
+
+const currentTime = document.querySelector(".current-time");
+const totalTime = document.querySelector(".total-time");
+const timeSlider = document.querySelector(".timeline-slider");
+
+const parseTimeFromString = timeString => {
+  return timeString.split(":").reduce((acc, time) => 60 * acc + +time);
+};
+
+const parseTimeToString = time => {
+  return new Date(time * 1000).toISOString().substring(14, 19);
+};
+
+const updateTimeStamp = prevValue => {
+  return setInterval(() => {
+    const newValue = ++prevValue;
+    currentTime.innerText = parseTimeToString(newValue);
+    timeSlider.value = newValue;
+  }, 1000);
+};
+
+const play = event => {
+  const song = getCurrentAlbum().find(
+    song => song.title === event.currentTarget.innerText
+  );
+  timeSlider.max = song.duration;
+  totalTime.innerText = parseTimeToString(song.duration);
+  playPauseIntervalId = updateTimeStamp(
+    parseTimeFromString(currentTime.innerText)
+  );
+  const miniPlayer = document.getElementById("mini-player");
+  const row = miniPlayer.children[0];
+  row.children[0].children[0].src = song.album.cover;
+  row.children[1].children[0].innerText = song.title;
+  row.children[1].children[1].innerText = song.artist.name;
 };
