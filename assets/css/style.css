@@ -300,7 +300,3 @@ ul {
 #album-pic {
   height: 100%;
 }
-
-i.no-before::before {
-  display: none;
-}

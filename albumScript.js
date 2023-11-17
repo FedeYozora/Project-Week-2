@@ -69,7 +69,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
         <div class="col-1" onclick="saveToLikedSongs(event)">
-        <a href="#"><i id="${song.id}" class="bi bi-heart mt-3 me-4 text-white"></i></a>
+        <a href="#"><i id="${song.id}" class="fa-regular fa-heart mt-3 me-4 text-white"></i></a>
         </div>
         <div class="col-4 ps-5">
         <h6>${rank}</h6>
@@ -80,6 +80,13 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         </div>`;
     }
     containerTrack.innerHTML = htmlString;
+
+    getLikedSongs().map(song => song.id).forEach(id => {
+      toggleLike(true, Array.from(containerTrack.children)
+          .map(track => track.children[2].children[0].children[0])
+          .find(item => id == item.id))
+    })
+
   })
   .then(() => {
     const rgbToHex = (r, g, b) =>
@@ -158,6 +165,19 @@ const getLikedSongs = () => {
 const getCurrentAlbum = () => {
   return JSON.parse(localStorage.getItem(albumStorageId));
 }
+
+const toggleLike = (active, icon) => {
+  if (!active) {
+    icon.classList.replace("fa-solid", "fa-regular")
+    icon.classList.add("text-white");
+    icon.style.cssText = "";
+  } else {
+    icon.classList.remove("text-white");
+    icon.classList.replace("fa-regular", "fa-solid")
+    icon.style.color = "green";
+  }
+}
+
 const saveSong = (song) => {
   const savedSongs = getLikedSongs() ?? [];
   const songToAdd = {
@@ -178,20 +198,13 @@ const saveSong = (song) => {
 
 const saveToLikedSongs = (ev, ...songs) => {
   if (ev) {
-    const songId = parseInt(ev.target.id);
-    const song = getCurrentAlbum().find(song => song.id === songId);
+    const songId = parseInt(ev.target?.id ?? ev.target.children[0].id);
+    const song = getCurrentAlbum()?.find(song => song.id === songId);
     if (!song) {
       console.error("song not found. unable to save")
     }
     const saved = saveSong(song);
-    if (!saved) {
-      console.log("deleted")
-      ev.target.classList.add("text-white", "no-before")
-      delete ev.target.style;
-      // ev.target.style.cssText = "color: white";
-    }
-    ev.target.classList.remove("text-white", "no-before")
-    ev.target.style.color = "green";
+    toggleLike(saved, ev.target)
   }
 
   if (songs.length === 0) {
