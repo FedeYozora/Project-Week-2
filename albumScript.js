@@ -25,7 +25,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
     const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
     container.innerHTML = `<div class="col-8 col-sm-3">
-      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="">
+      <img id="myImg" src="${albumObj.cover_medium}" style="scale: 1; width: -webkit-fill-available;" alt="" crossorigin="anonymous">
       </div>
       <div class="col-8 offset-sm-1 text-white"><h6 class="mt-5 d-none d-sm-block">Album</h6>
       <p class="albumName fw-bold fs-1" >${albumObj.title}</p>
@@ -58,9 +58,6 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         <h6>${i + 1}</h6>
         </div>
         <div class="col-6">
-        <a onclick="timeChange(${(trackMinutes, trackSeconds)})"
-         style="text-decoration: none;
-        color: darkgray;" href="#"> 
         <h6 class="text-white mt-2" style="text-overflow: ellipsis;white-space: nowrap;
         overflow: hidden;">${title}</h6>
         <a style="text-decoration: none;
@@ -72,10 +69,42 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
         <div class="col-1">
         <h6>${trackMinutes}:${trackSeconds}</h6>
         </div>
-        </div>
-        </a>`;
+        </div>`;
     }
     containerTrack.innerHTML = htmlString;
+  })
+  .then(() => {
+    const rgbToHex = (r, g, b) =>
+      "#" +
+      [r, g, b]
+        .map((x) => {
+          const hex = x.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        })
+        .join("");
+
+    rgbToHex(102, 51, 153); // #663399
+
+    const colorThief = new ColorThief();
+    const img = document.getElementById("myImg");
+    const background = document.getElementById("dominant-bg");
+    console.log(img);
+
+    if (img.complete) {
+      colorThief.getColor(img);
+      console.log(colorThief.getColor(img));
+      console.log("FIRST");
+    } else {
+      img.addEventListener("load", function () {
+        const colorProfile = colorThief.getColor(img);
+        const [r, g, b] = [...colorProfile];
+
+        background.style.cssText = background.style.cssText.replace(
+          "rgb(0, 0, 0)",
+          rgbToHex(r, g, b)
+        );
+      });
+    }
   });
 
 async function fetchPlaylist() {
@@ -101,33 +130,15 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {
     console.error("Error:", error);
   }
 }
-
-const colorThief = new ColorThief();
-const img = document.querySelector("img");
-
-// Make sure image is finished loading
-if (img.complete) {
-  colorThief.getColor(img);
-} else {
-  image.addEventListener("load", function () {
-    colorThief.getColor(img);
-  });
-}
-console.log(colorThief.getColor(img));
-
-const rgbToHex = (r, g, b) =>
-  "#" +
-  [r, g, b]
-    .map((x) => {
-      const hex = x.toString(16);
-      return hex.length === 1 ? "0" + hex : hex;
-    })
-    .join("");
-
-rgbToHex(102, 51, 153); // #663399

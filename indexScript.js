@@ -117,6 +117,12 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {

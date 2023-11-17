@@ -69,7 +69,7 @@ fetch(
         </div>
         <div class="col-5">
         <h6 class="text-white mt-2 mb-0" style="text-overflow: ellipsis;white-space: nowrap;
-        overflow: hidden;" onclick="play(event)">${title}</h6>
+        overflow: hidden;" onclick="play(event)"> <a href = "#">${title} </a> </h6>
         <a style="text-decoration: none;
         color: darkgray;" href="./artistPage.html?artistID=${artistId}"><h6 class="d-inline-block mb-3">${artistName}</h6></a>
         </div>
@@ -106,6 +106,12 @@ async function fetchPlaylist() {
     <a href="./searchPage.html?artistID=Cold+Play"><li>Cold Play</li></a>
     <a href="./searchPage.html?artistID=Ed+Sheran"><li>Ed Sheran</li></a>
     <a href="./searchPage.html?artistID=Drake"><li>Drake</li></a>
+    <a href="./searchPage.html?artistID=U2"><li>U2</li></a>
+    <a href="./searchPage.html?artistID=Pokemon"><li>Pokemon</li></a>
+    <a href="./searchPage.html?artistID=Michael+Jackson"><li>Michael Jackso</li></a>
+    <a href="./searchPage.html?artistID=The+Weeknd"><li>The Weeknd</li></a>
+    <a href="./searchPage.html?artistID=Billie+Eilish"><li>Billie Eilish</li></a>
+    <a href="./searchPage.html?artistID=Rihanna"><li>Rihanna</li></a>
     <a href="./searchPage.html?artistID=Ariana+Grande"><li>Ariana Grande</li></a>`;
     containerPlaylist.innerHTML = playlistString;
   } catch (error) {
@@ -143,6 +149,11 @@ const play = (event) => {
   playPauseIntervalId = updateTimeStamp(
     parseTimeFromString(currentTime.innerText)
   );
+  const miniPlayer = document.getElementById("mini-player");
+  const row = miniPlayer.children[0];
+  row.children[0].children[0].src = song.album.cover;
+  row.children[1].children[0].innerText = song.title;
+  row.children[1].children[1].innerText = song.artist.name;
 };
 
 const pause = () => {
