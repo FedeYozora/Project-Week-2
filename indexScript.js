@@ -25,6 +25,7 @@ async function fetchMainAlbum() {
     // const albumSeconds = Math.round(albumObj.duration - albumMinutes * 60);
 
     container.innerHTML = `<a href="./albumPage.html?albumID=68346981"><img src="${albumObj.data[0].album.cover_medium}" alt="" class="py-4"></a>
+    <div class="blank"></div>
       <div class="row py-2" style="align-content: center;">
         <div class="col gx-5">
           <p class="d-inline-block">Album</p>
@@ -42,7 +43,10 @@ async function fetchMainAlbum() {
           <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=-bROlO-KMto" target="_blank">Super Secret Download</a></li>
           </ul>
         </div>
-      </div>`;
+      </div>
+      <div class="blank" style="
+      flex-grow: 6;
+      "></div>`;
   } catch (error) {
     console.error("Error:", error);
   }
