@@ -44,7 +44,7 @@ body {
 .saveBtn {
   color: white;
   background-color: transparent;
-  border: 2px solid white;
+  border: 1px solid white;
   padding: 10px 25px;
   transition: padding 150ms;
 }

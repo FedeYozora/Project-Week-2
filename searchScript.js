@@ -163,16 +163,14 @@ if (artistID) {
           trackSeconds = `0` + trackSeconds;
         }
         document.getElementById("textBrani").innerText = "Brani";
-        document
-          .getElementById("rowSearch")
-          .classList.remove(
-            "row-cols-2",
-            "row-cols-sm-2",
-            "row-cols-md-3",
-            "row-cols-lg-4",
-            "row-cols-xl-5",
-            "row-cols-xxl-6"
-          );
+        document.getElementById("rowSearch").classList.remove(
+          "row-cols-2",
+          "row-cols-sm-2",
+
+          "row-cols-lg-3",
+          "row-cols-xl-4",
+          "row-cols-xxl-5"
+        );
 
         htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">
