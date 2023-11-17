@@ -15,11 +15,11 @@ function loadItems(url) {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   })
-    .then(resp => resp.json())
-    .then(albumObj => {
+    .then((resp) => resp.json())
+    .then((albumObj) => {
       const len = albumObj.data.length - 1;
       let htmlString = "";
       let albumhtml = "";
@@ -37,16 +37,13 @@ function loadItems(url) {
           trackSeconds = `0` + trackSeconds;
         }
         document.getElementById("textBrani").innerText = "Brani";
-        document
-          .getElementById("rowSearch")
-          .classList.remove(
-            "row-cols-2",
-            "row-cols-sm-2",
-            "row-cols-md-3",
-            "row-cols-lg-4",
-            "row-cols-xl-5",
-            "row-cols-xxl-6"
-          );
+        document.getElementById("rowSearch").classList.remove(
+          "row-cols-2",
+
+          "row-cols-lg-3",
+          "row-cols-xl-4",
+          "row-cols-xxl-5"
+        );
 
         htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">
@@ -86,22 +83,6 @@ function loadItems(url) {
       }
     });
 }
-const closeButton = document.getElementById("closeBtn");
-const centralColumn = document.getElementById("centralCol");
-const rightColumn = document.getElementById("rightCol");
-const sideBarButton = document.getElementById("sidebarButton");
-sideBarButton.onclick = () => {
-  rightColumn.classList.remove("d-none");
-  centralColumn.classList.remove("col-9");
-  sideBarButton.classList.add("d-none");
-};
-
-closeButton.onclick = () => {
-  rightColumn.classList.add("d-none");
-  // rightColumn.style.position = "unset";
-  centralColumn.classList.add("col-9");
-  sideBarButton.classList.remove("d-none");
-};
 
 function removeDuplicates() {
   let artistNamesDupe = document.getElementsByClassName("cardArtist");
@@ -124,8 +105,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        },
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
       }
     );
     const albumObj = await response.json();
@@ -160,11 +141,11 @@ if (artistID) {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+    }
   })
-    .then(resp => resp.json())
-    .then(albumObj => {
+    .then((resp) => resp.json())
+    .then((albumObj) => {
       const len = albumObj.data.length - 1;
       let htmlString = "";
       let albumhtml = "";
@@ -182,16 +163,14 @@ if (artistID) {
           trackSeconds = `0` + trackSeconds;
         }
         document.getElementById("textBrani").innerText = "Brani";
-        document
-          .getElementById("rowSearch")
-          .classList.remove(
-            "row-cols-2",
-            "row-cols-sm-2",
-            "row-cols-md-3",
-            "row-cols-lg-4",
-            "row-cols-xl-5",
-            "row-cols-xxl-6"
-          );
+        document.getElementById("rowSearch").classList.remove(
+          "row-cols-2",
+          "row-cols-sm-2",
+
+          "row-cols-lg-3",
+          "row-cols-xl-4",
+          "row-cols-xxl-5"
+        );
 
         htmlString += `<div class="row" style="align-items: center;">
         <div class="col-1">

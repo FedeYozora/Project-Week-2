@@ -20,14 +20,15 @@
     />
     <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/circular-font.css" />
-    <link rel="stylesheet" href="./assets/css/album.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/album.css" />
     <link rel="icon" type="image/x-icon" href="./assets/imgs/favicon.png" />
   </head>
   <body>
     <div class="container-fluid">
       <div class="row" style="height: 100vh">
-        <div class="col-3 sidebar">
+        <!-- LEFT SIDEBAR  -->
+        <div class="col-0 col-sm-3 d-none d-sm-inline-block sidebar">
           <div class="logo">
             <img src="./assets/imgs/LogoWhite.png" alt="Logo Spotify" />
           </div>
@@ -80,9 +81,11 @@
             <ul id="playlistElenco"></ul>
           </div>
         </div>
+        <!-- MIDDLE SECTION  -->
         <div
-          class="col-7 offset-3 px-0 scrollableMain"
+          class="col-12 col-sm-9 offset-sm-3 offset-0 px-0"
           style="margin-bottom: 90px"
+          id="centralCol"
         >
           <main>
             <div
@@ -93,8 +96,8 @@
                   rgb(0, 0, 0) 0%,
                   rgb(29, 27, 27) 90%
                 );
-                height: 500px;
               "
+              id="divBlured"
             >
               <div class="d-flex align-items-center gap-4 px-4 mb-3 py-3">
                 <button
@@ -105,14 +108,14 @@
                 </button>
                 <button
                   onclick="history.forward()"
-                  class="btn arrowsTop rounded-circle"
+                  class="btn arrowsTop rounded-circle d-none d-sm-block"
                 >
                   <i class="fa-solid fa-chevron-right"></i>
                 </button>
                 <div class="blank"></div>
                 <button
                   style="background-color: #373737; color: white"
-                  class="btn dropdown-toggle rounded-pill"
+                  class="btn dropdown-toggle rounded-pill d-none d-sm-block"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -131,7 +134,7 @@
                 </ul>
                 <button
                   id="sidebarButton"
-                  class="btn arrowsTop rounded-circle friends d-none"
+                  class="btn arrowsTop rounded-circle friends d-none d-sm-block"
                 >
                   <i class="fa-solid fa-users"></i>
                 </button>
@@ -139,14 +142,14 @@
               <div class="container-fluid mt-2">
                 <div
                   id="albumInfo"
-                  class="row align-items-center"
+                  class="row align-items-center flex-column flex-sm-row"
                   style="padding-inline: 30px"
                 >
-                  <div class="col-3">
+                  <div class="col-7 col-sm-3">
                     <img src="" alt="" />
                   </div>
-                  <div class="col-8 offset-1 text-white">
-                    <h6 class="mt-5"></h6>
+                  <div class="col-12 col-sm-8 offset-1 text-white">
+                    <h6 class="mt-5 d-none"></h6>
                     <h1 class="albumName"></h1>
                     <div>
                       <img class="artistImg" src="" alt="" />
@@ -182,7 +185,7 @@
                   <div class="col-4 ps-4">
                     <h6>CLASSIFICA</h6>
                   </div>
-                  <div class="col-1 ps-4">
+                  <div class="col-1 ps-3">
                     <h6><i class="bi bi-clock"></i></h6>
                   </div>
                 </div>
@@ -192,8 +195,10 @@
             </div>
           </main>
         </div>
+        <!-- RIGHT SIDEBAR  -->
         <div
-          class="col-2 vh-100 pt-2 mb-3"
+          class="col-0 col-sm-2 vh-100 pt-2 mb-3 d-none"
+          id="rightCol"
           style="background-color: black; position: fixed; right: 0"
         >
           <div class="row mt-3">
@@ -202,7 +207,9 @@
             </div>
             <div class="col-5 d-flex justify-content-end">
               <button><i class="fas fa-user-friends me-2"></i></button>
-              <button><i class="fas fa-times ps-2 pe-2"></i></button>
+              <button id="closeBtn">
+                <i class="fas fa-times ps-2 pe-2"></i>
+              </button>
             </div>
           </div>
           <h6 class="mt-5" style="color: lightgrey">
@@ -276,18 +283,28 @@
         </div>
       </div>
     </div>
+    <!-- PLAYER  -->
     <div class="player">
-      <div class="volume-controls"></div>
-      <div class="player-center">
-        <div class="player-controls">
+      <div class="volume-controls d-none d-sm-flex"></div>
+      <div class="player-center ms-auto ms-sm-0">
+        <div class="player-controls gap-4 gap-sm-0">
           <img
             style="height: 1rem; margin-right: 1rem; opacity: 0.8"
             src="./assets/./imgs/shuffle.png"
+            class="d-none d-sm-flex"
           />
           <img
             style="height: 1rem; margin-right: 1rem; opacity: 0.8"
             src="./assets/./imgs/previous_musicbar.png"
+            class="d-none d-sm-flex"
           />
+          <img
+            src="./assets/./imgs/device.png"
+            style="height: 1.2rem; opacity: 0.8"
+            alt="Settings"
+            class="d-sm-none"
+          />
+          <i class="fa-regular fa-heart d-sm-none fs-4"></i>
           <img
             style="height: 2rem; margin-right: 1rem"
             src="./assets/./imgs/play_musicbar.png"
@@ -295,13 +312,15 @@
           <img
             style="height: 1rem; margin-right: 1rem; opacity: 0.8"
             src="./assets/./imgs/next_musicbar.png"
+            class="d-none d-sm-flex"
           />
           <img
             style="height: 1rem; margin-right: 1rem; opacity: 0.8"
             src="./assets/./imgs/loop.png"
+            class="d-none d-sm-flex"
           />
         </div>
-        <div class="player-timeline">
+        <div class="player-timeline d-none d-sm-flex">
           <span class="current-time">0:00</span>
           <input
             type="range"
@@ -315,7 +334,7 @@
         </div>
       </div>
 
-      <div class="volume-controls">
+      <div class="volume-controls d-none d-sm-flex">
         <img
           src="./assets/./imgs/queue.png"
           style="height: 1rem; margin-right: 1rem; opacity: 0.8"
@@ -341,6 +360,29 @@
         />
       </div>
     </div>
+    <!-- NAV BOTTOM  -->
+    <div id="navBottom" class="d-flex d-sm-none flex-column-reverse">
+      <div class="row row-cols-3 align-items-center">
+        <a class="text-decoration-none text-white" href="./index.html">
+          <div class="col text-center">
+            <i class="fa-solid fa-house"></i>
+            <p>Home</p>
+          </div>
+        </a>
+        <a class="text-decoration-none text-white" href="#">
+          <div class="col text-center">
+            <i class="fa-solid fa-magnifying-glass p-0"></i>
+            <p>Cerca</p>
+          </div>
+        </a>
+        <a class="text-decoration-none text-white" href="#">
+          <div class="col text-center">
+            <i class="fa-solid fa-bars"></i>
+            <p>Libreria</p>
+          </div>
+        </a>
+      </div>
+    </div>
   </body>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -349,4 +391,5 @@
   ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
   <script src="./albumScript.js"></script>
+  <script src="./sidebarScript.js"></script>
 </html>

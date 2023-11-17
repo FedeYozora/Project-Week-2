@@ -8,10 +8,18 @@ body {
   );
   min-height: 100vh;
 }
-.arrowsTop {
-  background-color: #131313;
-  color: white;
-  font-weight: 900;
+@media screen and (max-width: 575px) {
+    body {
+        height: 181vh;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 71%, rgba(33,33,33,1) 100%);
+    }
+    
+}
+.arrowsTop  {
+    background-color: #131313;
+    color: white;
+    font-weight: 900;
 }
 input {
   background-color: #2a2a2a;
