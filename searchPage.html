@@ -93,13 +93,17 @@
                   <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
-                <div class="form d-inline-block">
+                <div class="form d-inline-block" style="
+                position: relative;">
+                  <i class="fa-solid fa-magnifying-glass" style="
+                  z-index: 1;
+              "></i>
                   <form id="form">
                     <input
                       id="searchInput"
                       type="text"
                       class="rounded-pill py-2 ps-3"
-                      placeholder="&#128269; Cosa vuoi ascoltare?"
+                      placeholder="   Cosa vuoi ascoltare?"
                       style="padding-inline: 7px"
                     />
                   </form>
@@ -140,19 +144,20 @@
                 id="rowSearch"
                 class="row row-gap-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6"
               >
-                <div class="col">
-                  <div class="searchCard rounded ps-4">
-                    <p class="h5 fw-bold mt-3">Podcast</p>
-                    <div class="d-flex">
-                      <img
-                        src="./assets/imgs/search/image-1.jpeg"
-                        alt=""
-                        width="100px"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
+                <a href="./searchPage.html?artistID=podcast"
+                  ><div class="col">
+                    <div class="searchCard rounded ps-4">
+                      <p class="h5 fw-bold mt-3">Podcast</p>
+                      <div class="d-flex">
+                        <img
+                          src="./assets/imgs/search/image-1.jpeg"
+                          alt=""
+                          width="100px"
+                        />
+                      </div>
+                    </div></div
+                ></a>
+                <a href="./searchPage.html?artistID=lo-fi"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Lo-Fi</p>
                     <div class="d-flex">
@@ -163,8 +168,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=sleep"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Sleep</p>
                     <div class="d-flex">
@@ -175,8 +180,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=rock"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Rock</p>
                     <div class="d-flex">
@@ -187,8 +192,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=party+song"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Party Songs</p>
                     <div class="d-flex">
@@ -199,8 +204,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=metal"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Metal</p>
                     <div class="d-flex">
@@ -211,8 +216,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=punk"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Punk</p>
                     <div class="d-flex">
@@ -223,8 +228,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=pop"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Pop</p>
                     <div class="d-flex">
@@ -235,8 +240,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=arab+pop"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Arab Pop</p>
                     <div class="d-flex">
@@ -247,8 +252,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=games+songs"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Gaming</p>
                     <div class="d-flex">
@@ -259,8 +264,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=car+songs"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Car Songs</p>
                     <div class="d-flex">
@@ -271,8 +276,8 @@
                       />
                     </div>
                   </div>
-                </div>
-                <div class="col">
+                </div></a>
+                <a href="./searchPage.html?artistID=gym"><div class="col">
                   <div class="searchCard rounded ps-4">
                     <p class="h5 fw-bold mt-3">Gym Music</p>
                     <div class="d-flex">
@@ -284,7 +289,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div></a>
               <p id="textAlbum" class="h4 fw-bold mt-4 d-none">Artisti</p>
               <div
                 id="albumRow"

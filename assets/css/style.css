@@ -20,6 +20,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
+  font-size: 20px;
   max-width: 480px;
   background-color: #000000;
   padding: 24px;
@@ -62,7 +63,9 @@ hr {
   margin-top: 10px;
 }
 .scrollable {
-  max-height: 489px; /* Adjust this value according to your desired list height */
+  max-height: calc(
+    100vh - 500px
+  ); /* Adjust this value according to your desired list height */
   overflow-y: auto;
   /* border: 1px solid #ccc; */
   padding: 5px;
