@@ -28,7 +28,7 @@ fetch("https://deezerdevs-deezer.p.rapidapi.com/album/" + albumID, {
       <img id="myImg" src="${albumObj.cover_medium}" style=width:100% alt="" crossorigin="anonymous">
       </div>
       <div class="col-8 offset-sm-1 text-white"><h6 class="mt-5 d-none d-sm-block">Album</h6>
-      <p class="albumName fw-bold fs-1" >${albumObj.title}</p>
+      <p class="albumName fw-bolder fs-1" >${albumObj.title}</p>
       <div>
       <img class="artistImg rounded-circle" src="${albumObj.artist.picture_small}" style="scale: 0.7" alt="">
       <a style="text-decoration: none;
