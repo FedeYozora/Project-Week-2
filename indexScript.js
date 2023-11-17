@@ -15,8 +15,8 @@ async function fetchMainAlbum() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
@@ -35,9 +35,12 @@ async function fetchMainAlbum() {
           <p>Ascolta il nuovo album dei Imagine Dragons!</p>
           <button class="rounded-pill btn playBtn fw-bold">Play</button>
           <button class="rounded-pill btn saveBtn fw-bold">Salva</button>
-          <button class="btn">
-            <i class="fa-solid fa-ellipsis" style="color: #ffffff"></i>
+          <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-ellipsis" style="color: #ffffff"></i>
           </button>
+          <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=-bROlO-KMto" target="_blank">Super Secret Download</a></li>
+          </ul>
         </div>
       </div>`;
   } catch (error) {
@@ -54,8 +57,8 @@ async function fetchAlbums() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
@@ -103,8 +106,8 @@ async function fetchPlaylist() {
         headers: {
           "X-RapidAPI-Key":
             "f04c55fb80msh6fa1ef56e5bfc0bp1b81eejsn1dd6cba9b4bd",
-          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-        }
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
       }
     );
     const albumObj = await response.json();
